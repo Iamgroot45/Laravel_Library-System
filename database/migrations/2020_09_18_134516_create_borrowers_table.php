@@ -18,7 +18,7 @@ class CreateBorrowersTable extends Migration
             $table->string('last_name');
             $table->string('first_name');
             $table->string('middle_initial');
-            $table->int('contanct_number');
+            $table->int('contact_number');
             $table->string('email_address');
             $table->string ('purpose');
             $table->timestamps();
