@@ -14,11 +14,11 @@ class CreateBorrowersTable extends Migration
     public function up()
     {
         Schema::create('borrowers', function (Blueprint $table) {
-            $table->borrowers_id();
+            $table->id();
             $table->string('last_name');
             $table->string('first_name');
             $table->string('middle_initial');
-            $table->int('contact_number');
+            $table->string('contact_number');
             $table->string('email_address');
             $table->string ('purpose');
             $table->timestamps();
