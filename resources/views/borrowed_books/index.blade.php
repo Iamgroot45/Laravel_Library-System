@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
+@extends('layouts.master')
+
+@section('contents')
+    
     <h2>Borrowed Books</h2>
-    <table>
-        <thead>
+    <table class="table table-striped">
+        <thead class="thead-dark">
             <tr>
                 <th>ID</th>
                 <th>Book ID</th>
@@ -21,7 +16,7 @@
                 <th>Returned Date</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody >
             @foreach($borrowed_books as $borrowed_book)
                 <tr>
                     <td>{{$borrowed_book->id}}</td>
@@ -56,5 +51,4 @@
             @endforeach
         </tbody>
     </table>
-</body>
-</html>
+    @endsection
