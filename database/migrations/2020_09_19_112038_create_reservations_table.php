@@ -15,9 +15,11 @@ class CreateReservationsTable extends Migration
     {
         Schema::create('reservations', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('book_id')->nullable();
             $table->foreign('book_id')->references('id')->on('books');
+            $table->unsignedBigInteger('staff_id')->nullable();
             $table->foreign('staff_id')->references('id')->on('staff');
-            $table->date('reservation_date');
+            $table->date('reservation_date')->useCurrent();
             $table->date('pickup_date');
             $table->timestamps();
         });
