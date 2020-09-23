@@ -22,14 +22,14 @@ class CreateBooksTable extends Migration
             $table->longText('summary');
             $table->date('publication_date');
             $table->decimal('book_location');
-            $table->int('number_of_copies');
-            $table->int('copies_available');
-            $table->int('rating_1');
-            $table->int('rating_2');
-            $table->int('rating_3');
-            $table->int('rating_4');
-            $table->int('rating_5');
-            $table->double('average_rating');
+            $table->integer('number_of_copies');
+            $table->integer('copies_available')->nullable();
+            $table->integer('rating_1')->nullable();
+            $table->integer('rating_2')->nullable();
+            $table->integer('rating_3')->nullable();
+            $table->integer('rating_4')->nullable();
+            $table->integer('rating_5')->nullable();
+            $table->double('average_rating')->nullable();
             $table->timestamps();
         });
     }
