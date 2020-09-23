@@ -16,3 +16,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/borrowed_books', 'BorrowedBooksController@index');
+
+Route::get('/borrowed_books/create', 'BorrowedBooksController@create');
+
+Route::get('/borrowed_books/{borrowed_book}', 'BorrowedBooksController@show');
+
+
+Route::post('/borrowed_books', 'BorrowedBooksController@store');
+
+Route::get('/borrowed_books/{borrowed_book}/edit', 'BorrowedBooksController@edit');
+
+Route::put('/borrowed_books/{borrowed_book}', 'BorrowedBooksController@update');
+
+Route::delete('/borrowed_books/{borrowed_book}/delete', 'BorrowedBooksController@delete');
