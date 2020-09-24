@@ -11,8 +11,8 @@ class daily_time_records extends Controller
     
 
   public function index(){
-    	$reservations = Reservation::all();
-    	return view('dailyrecords.index' , compact('reservations'));
+    	$dailyrecords = Dailyrecords::all();
+    	return view('dailyrecords.index' , compact('dailyrecord'));
     }
 
    public function create(){
@@ -24,38 +24,44 @@ class daily_time_records extends Controller
     	$dailyrecords = new dailyrecords;
     	$dailyrecords->create([
     		// column => value
-    		'book_id' => request()->book_id,
+    		'ID' => request()->id,
     		'staff_id' => request()->staff_id,
-    		'reservation_date'=>$current,
-    		'pickup_date' =>  request()->pickup_date
+    		'time_in' => request()->time_in,
+    		'time_out' => request()->time_out,
+    		'date'=>$current,
+    		
+
     	]);
 
-    	return redirect('/record');
+    	return redirect('/dailyrecord');
     }
 
-    public function show(dailyrecords $dailyrecords){
+    public function show(Dailyrecords $dailyrecords){
     	// $dailyrecords  = Dailyrecords::find($dailyrecords_id);
-    	return view('dailyrecords.show', compact('reservation'));
+    	return view('dailyrecords.show', compact('dailyrecord'));
     }
 
-    public function edit(Reservation $reservation){
-    	return view('reservations.edit', compact('reservation'));
+    public function edit(Dailyrecords $dailyrecords){
+    	return view('dailyrecords.edit', compact('dailyrecord'));
     }
 
-    public function update(Reservation $reservation){
-    	$reservation->update([
-    		'book_id' => request()->book_id,
+    public function update(Dailyrecords $dailyrecords){
+    	$dailyrecords->update([
+    		'ID' => request()->id,
     		'staff_id' => request()->staff_id,
-    		'reservation_date' => request()->reservation_date,
-    		'pickup_date' =>  request()->pickup_date
+    		'time_in' => request()->time_in,
+    		'time_out' => request()->time_out,
+    		'date'=>$current,
+    		
+
     	]);
 
-    	return redirect('/reservations');
+    	return redirect('/dailyrecords');
     }
 
-    public function delete(Reservation $reservation){
+    public function delete(Dailyrecords $dailyrecords){
     	$reservation->delete();
-    	return redirect('/reservations');
+    	return redirect('/dailyrecords');
 }
 
 

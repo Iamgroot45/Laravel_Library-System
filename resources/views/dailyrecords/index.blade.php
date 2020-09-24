@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Reservations</title>
+	<title>Dailyrecords</title>
 </head>
 <body>
-	<h2>Reservations: </h2>
+	<h2>Dailyrecords: </h2>
 	<table>
 		<thead>
 			<tr>
 				<th>ID</th>
-				<th>Book ID</th>
 				<th>Staff ID</th>
-				<th>Reservation Date</th>
-				<th>Pickup Date</th>
+				<th>Date</th>
+				<th>Time In</th>
+				<th>Time Out</th>
+				
+				
 			</tr>
 		</thead>
 		<tbody>
-			@foreach($reservations as $reservation)
+			Schema::create('daily_time_records', function (Blueprint $table) {
+            $table->id();
+            $table->foreign('staff_id')->references('id')->on('staff');
+            $table->time('time_in');
+            $table->time('time_out');
+            $table->date('date');
+            $table->timestamps();
+			@foreach($dailyrecords as $dailyrecord)
 				<tr>
-					<td>{{ $reservation->id }}</td>
-					<td>{{ $reservation->book_id }}</td>
-					<td>{{ $reservation->staff_id }}</td>
-					<td>{{ $reservation->reservation_date}}</td>
-					<td>{{ $reservation->pickup_date }}</td>
+					<td>{{ $->id }}</td>
+					<td>{{ $dailyrecords->id }}</td>
+					<td>{{ $dailyrecords->staff_id }}</td>
+					<td>{{ $dailyrecords->time_in}}</td>
+					<td>{{ $dailyrecords->time_out}}</td>
 					 <td>
-                        <a href="/reservations/{{$reservation->id}}">Show</a>
+                        <a href="/dailyrecords/{{$dailyrecord->id}}">Show</a>
                     </td>
                     <td>
-                        <a href="/reservations/{{$reservation->id}}/edit">Edit</a>
+                        <a href="/dailyrecords/{{$dailyrecord->id}}/edit">Edit</a>
                     </td>
                     <td>
-                        <form action="/reservations/{{$reservation->id}}/delete" method="POST">
+                        <form action="/dailyrecords/{{$dailyrecord->id}}/delete" method="POST">
                             @csrf
                             @method('delete')
                             <input type="submit" name="delete" value="delete">
@@ -41,6 +50,6 @@
 		</tbody>
 
 	</table>
-	<a href="/reservations/create">Create</a>    
+	<a href="/dailyrecords/create">Create</a>    
 </body>
 </html> 
