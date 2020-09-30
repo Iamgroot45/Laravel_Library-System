@@ -34,7 +34,6 @@
 
     <main>
       @yield('contents')
-
     </main>
 
 

@@ -4,6 +4,17 @@
     
 
     <form action="/borrowed_books" method="POST">
+
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
+
         @csrf
         <label for="">Book ID: </label>
         <input type="text" name="book">

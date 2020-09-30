@@ -23,6 +23,14 @@ class BorrowedBooksController extends Controller
     }
 
     public function store(){
+
+        request()->validate([
+            'book' => 'required',
+            'borrower' => 'required',
+            'staff' => 'required',
+            'stats' => 'required',    
+        ]);
+
         $current = Carbon::now();
         $borrowed_book = new BorrowedBook;
         $borrowed_book->create([
@@ -43,6 +51,14 @@ class BorrowedBooksController extends Controller
     }
 
     public function update(BorrowedBook $borrowed_book){
+
+        request()->validate([
+            'book' => 'required',
+            'borrower' => 'required',
+            'staff' => 'required',
+            'stats' => 'required',    
+        ]);
+
         $current = Carbon::now();
         $borrowed_book->update([
             'book_id' => request()->book,

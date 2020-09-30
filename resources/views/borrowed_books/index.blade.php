@@ -3,6 +3,8 @@
 @section('contents')
     
     <h2>Borrowed Books</h2>
+    <a href="/borrowed_books/create">
+    <h3>Create</h3></a>
     <table class="table table-striped">
         <thead class="thead-dark">
             <tr>
@@ -31,9 +33,7 @@
                     <td>
                         <a href="/borrowed_books/{{$borrowed_book->id}}">Show</a>
                     </td>
-                    <td>
-                        <a href="/borrowed_books/create">Create</a>
-                    </td>
+                    
 
                     <td>
                         <a href="/borrowed_books/{{$borrowed_book->id}}/edit">Edit</a>
