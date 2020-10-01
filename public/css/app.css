@@ -1,0 +1,11 @@
+label {
+  color: white;
+}
+
+.container {
+  width: 540px !important;
+  margin-top: 5%;
+  padding: 24px 32px;
+  background-color: black;
+}
+

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <title>Login</title>
@@ -12,8 +13,19 @@
 <body>
     <div class="container">
         <form action="">
-            <input type="email">
-            <input type="password">
+            <div class="form-group">
+                <label for="email-input">Username</label>
+                <input type="email" id="email-input" class="form-control" placeholder="Email">
+            </div>
+
+            <div class="form-group">
+                <label for="password-input">Password</label>
+                <input type="password" id="password-input" class="form-control">
+            </div>
+
+            <div class="d-flex justify-content-center">
+                <input type="submit" value="Login" class="btn btn-light">
+            </div>
         </form>
     </div>
 
