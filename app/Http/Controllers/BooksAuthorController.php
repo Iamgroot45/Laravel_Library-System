@@ -25,11 +25,16 @@ class BooksAuthorController extends Controller
 
     public function store()
     {
-    	$book_author = new Book_author;
-    	$book_author->author_id = request()->author_id;
-    	$book_author->book_id = request()->book_id;
-    	$book_author->save();
+        request()->validate([
+            'author_id' => 'required',
+            'book_id' => 'required',   
+        ]);
 
+    	$book_author = new Book_author;
+        $book_author->create([
+            'author_id' => request()->author_id,
+            'book_id' => request()->book_id,
+        ]);
     	return redirect('/book_authors');
     }
 
@@ -40,9 +45,16 @@ class BooksAuthorController extends Controller
 
     public function update(Book_author $book_author)
     {
-    	$book_author->author_id = request()->author_id;
-    	$book_author->book_id = request()->book_id;
-    	$book_author->save();
+        request()->validate([
+            'author_id' => 'required',
+            'book_id' => 'required',   
+        ]);
+
+        $book_author = new Book_author;
+        $book_author->update([
+            'author_id' => request()->author_id,
+            'book_id' => request()->book_id,
+        ]);
     	return redirect('/book_authors');
 
     }

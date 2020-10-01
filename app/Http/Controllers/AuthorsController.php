@@ -26,12 +26,18 @@ class AuthorsController extends Controller
 
     public function store()
     {
-    	$author = new Author;
-    	$author->first_name = request()->first_name;
-    	$author->last_name = request()->last_name;
-    	$author->middle_initial = request()->middle_initial;
-    	$author->save();
+    	request()->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'middle_initial' => 'required',    
+        ]);
 
+    	$author = new Author;
+		$author->create([
+            'first_name' => request()->first_name,
+            'last_name' => request()->last_name,
+            'middle_initial' => request()->middle_initial,
+        ]);
     	return redirect('/authors');
     }
 
@@ -42,10 +48,17 @@ class AuthorsController extends Controller
 
     public function update(Author $author)
     {
-    	$author->first_name = request()->first_name;
-    	$author->last_name = request()->last_name;
-    	$author->middle_initial = request()->middle_initial;
-    	$author->save();
+    	request()->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'middle_initial' => 'required',   
+        ]);
+
+		$author->update([
+            'first_name' => request()->first_name,
+            'last_name' => request()->last_name,
+            'middle_initial' => request()->middle_initial,
+        ]);
     	return redirect('/authors');
 
     }

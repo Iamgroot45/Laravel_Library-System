@@ -43,16 +43,16 @@ Route::get('/authors','AuthorsController@index');
 // Get /book_authors/create display the create form
 Route::get('/book_authors/create','BooksAuthorController@create');
 
-// ----edit
+// ----edit ----
 Route::get('/book_authors/{book_author}/edit', 'BooksAuthorController@edit');
 
-// display one ---
+// display one ------
 Route::get('/book_authors/{book_author}','BooksAuthorController@show');
 
 // Store book_author ID
 Route::post('/book_authors','BooksAuthorController@store');
 
-// Get /book_authors/{book_author}/update display the update form
+// Get /book_authors/{book_author}/update display the update form ---
 Route::put('/book_authors/{book_author}', 'BooksAuthorController@update');
 
 // Delete /book_authors/{author} delete a record----
