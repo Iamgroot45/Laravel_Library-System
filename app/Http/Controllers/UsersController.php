@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Redis;
 
 class UsersController extends Controller
 {
-
     public function index()
     {
         $users = User::all();
@@ -24,21 +26,17 @@ class UsersController extends Controller
     public function store(Request $request)
     {
 
-        $validateThis =  request()->validate([
+        request()->validate([
             'username' => 'required|unique:users,username|email',
             'password' => 'required',
             'distinction' => 'required'
-
-
         ]);
-        $validateThis['password'] = bcrypt($validateThis['password']);
 
         $user = new User();
         $user -> create([
-
-            'username' => request() ->username,
-            'password' => request() ->password,
-            'distinction' => request() ->distinction
+            'username' => request()->username,
+            'password' => Hash::make(request()->password),
+            'distinction' => request()->distinction
         ]);
 
         return redirect ('/users');
@@ -64,10 +62,10 @@ class UsersController extends Controller
             'username' => 'required|unique:users,username|email',
             'password' => 'required',
             'distinction' => 'required'
-
-
         ]);
+
         $validateThis['password'] = bcrypt($validateThis['password']);
+
         $user -> update([
 
             'username' => request() ->username,

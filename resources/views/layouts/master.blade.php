@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    
+
     <title>Document</title>
 </head>
 
@@ -15,18 +15,22 @@
         <nav class="navbar navbar-dark bg-dark justify-content-between">
             <h3 style="color:white;">Library</h3>
             <ul class="nav nav-pills flex-column flex-sm-row">
-                <li class="nav-item">
-                  <a class="nav-link active" href="#">Home</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Contact</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Account</a>
-                </li>
+                @auth
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('logout') }}">Logout</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="">{{auth()->user()->username}}</a>
+                    </li>
+                @endauth
+                @guest
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('register') }}">Register</a>
+                    </li>
+                @endguest
               </ul>
         </nav>
     </header>
@@ -59,11 +63,11 @@
                   <a href="#!">Instagram: sampleinstagram</a>
                 </li>
               </ul>
-      
+
             </div>
             <div class="col-md-3 mb-md-0 mb-3">
               <h5 class="text-uppercase">CHECKOUT</h5>
-      
+
               <ul class="list-unstyled">
                 <li>
                   <a href="#!">Home</a>
@@ -78,7 +82,7 @@
                   <a href="#!">Account</a>
                 </li>
               </ul>
-      
+
             </div>
           </div>
         </div>
