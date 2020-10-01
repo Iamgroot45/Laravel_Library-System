@@ -37,3 +37,5 @@ Route::put('/reservations/{reservation}', 'ReservationsController@update');
 
 // Delete a reservation
 Route::delete('/reservations/{reservation}/delete', 'ReservationsController@delete');
+
+Route::get('/login', 'AuthController@index')->name('login');

@@ -21,6 +21,12 @@ class ReservationsController extends Controller
     }
 
     public function store(){
+    	request()->validate([
+    		'book_id' => 'required',
+    		'staff_id' => 'required',
+    		'pickup_date' =>  'required'
+        ]);
+
     	$current = Carbon::now();
     	$reservation = new Reservation;
     	$reservation->create([
@@ -44,6 +50,13 @@ class ReservationsController extends Controller
     }
 
     public function update(Reservation $reservation){
+    	request()->validate([
+            'book_id'=>'required',
+    		'staff_id'=>'required',
+    		'reservation_date'=>'required',
+    		'pickup_date'=>'required',
+        ]);
+
     	$reservation->update([
     		'book_id' => request()->book_id,
     		'staff_id' => request()->staff_id,
