@@ -16,11 +16,19 @@
             @csrf
             <div class="form-row">
                 <div class="form-group col-md-6">
+                    @error('last_name')
+                        <div class="alert alert-danger"> {{ $message }}</div>
+                    @enderror
+
                     <label for="lname">Last Name</label>
                     <input type="text" class="form-control" name="last_name" id="lname">
                 </div>
 
                 <div class="form-group col-md-6">
+                    @error('first_name')
+                        <div class="alert alert-danger"> {{ $message }}</div>
+                    @enderror
+
                     <label for="lname">First Name</label>
                     <input type="text" class="form-control" name="first_name" id="fname">
                 </div>
@@ -28,11 +36,19 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
+                    @error('middle_initial')
+                        <div class="alert alert-danger"> {{ $message }}</div>
+                    @enderror
+
                     <label for="lname">Middle Initial</label>
                     <input type="text" class="form-control" name="middle_initial" id="minitial">
                 </div>
 
                 <div class="form-group col-md-6">
+                    @error('position')
+                        <div class="alert alert-danger"> {{ $message }}</div>
+                    @enderror
+
                     <label for="lname">Position</label>
                     <input type="text" class="form-control" name="position" id="position">
                 </div>
@@ -40,6 +56,10 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
+                    @error('area_assigned')
+                        <div class="alert alert-danger"> {{ $message }}</div>
+                    @enderror
+
                     <label for="lname">Area Assigned</label>
                     <input type="text" class="form-control" name="area_assigned" id="area_assigned">
                 </div>

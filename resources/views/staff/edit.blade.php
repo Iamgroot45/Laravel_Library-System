@@ -14,13 +14,22 @@
         <form action="/staff/update/{{$result->id}}" method="POST">
             @csrf
             @method('PUT')
+
             <div class="form-row">
                 <div class="form-group col-md-6">
+                    @error('last_name')
+                        <div class="alert alert-danger"> {{ $message }}</div>
+                    @enderror
+
                     <label for="lname">Last Name</label>
                     <input type="text" class="form-control" name="last_name" id="lname" value="{{$result->last_name}}">
                 </div>
 
                 <div class="form-group col-md-6">
+                    @error('first_name')
+                        <div class="alert alert-danger"> {{ $message }}</div>
+                    @enderror
+
                     <label for="lname">First Name</label>
                     <input type="text" class="form-control" name="first_name" id="fname" value="{{$result->first_name}}">
                 </div>
@@ -28,11 +37,19 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
+                    @error('middle_initial')
+                        <div class="alert alert-danger"> {{ $message }}</div>
+                    @enderror
+
                     <label for="lname">Middle Initial</label>
                     <input type="text" class="form-control" name="middle_initial" id="minitial" value="{{$result->middle_initial}}">
                 </div>
 
                 <div class="form-group col-md-6">
+                    @error('position')
+                        <div class="alert alert-danger"> {{ $message }}</div>
+                    @enderror
+
                     <label for="lname">Position</label>
                     <input type="text" class="form-control" name="position" id="position" value="{{$result->position}}">
                 </div>
@@ -40,6 +57,10 @@
 
             <div class="form-row">
                 <div class="form-group col-md-6">
+                    @error('area_assigned')
+                        <div class="alert alert-danger"> {{ $message }}</div>
+                    @enderror
+
                     <label for="lname">Area Assigned</label>
                     <input type="text" class="form-control" name="area_assigned" id="area_assigned" value="{{$result->area_assigned}}">
                 </div>

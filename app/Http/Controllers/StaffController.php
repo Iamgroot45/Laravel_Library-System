@@ -22,7 +22,14 @@ class StaffController extends Controller
 
     public function store(Request $request)
     {
-        $staff = new Staff;
+        $request->validate([
+            'last_name' => 'required',
+            'first_name' => 'required',
+            'middle_initial' => ['required', 'max:1'],
+            'position' => 'required',
+            'area_assigned' => 'required'
+        ]);
+
         $staff = Staff::create([
             'last_name' => $request->last_name,
             'first_name' => $request->first_name,
@@ -50,6 +57,14 @@ class StaffController extends Controller
 
     public function update(Request $request, $id)
     {
+        $request->validate([
+            'last_name' => 'required',
+            'first_name' => 'required',
+            'middle_initial' => ['required', 'max:1'],
+            'position' => 'required',
+            'area_assigned' => 'required'
+        ]);
+
         $staff = Staff::find($id);
         $staff->last_name = $request->input('last_name');
         $staff->first_name = $request->input('first_name');
@@ -67,4 +82,5 @@ class StaffController extends Controller
 
         return redirect('/staff');
     }
+
 }
