@@ -40,6 +40,7 @@
 				</tr>
 			<?php endforeach; ?>
 		</tbody>
+		<a href="/borrowers/create">Create</a>
 	</table>
 </body>
 </html>

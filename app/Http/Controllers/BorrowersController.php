@@ -19,18 +19,27 @@ class BorrowersController extends Controller
     }
 
     public function store(){
-    	$borrower = new Borrower;
-    	$borrower->create([
-    		// column => value
-    		'first_name' => request()->first_name,
-    		'last_name' => request()->last_name,
-    		'middle_initial' => request()->middle_initial,
-    		'contact_number' => request()->contact_number,
-    		'email_address' =>  request()->email_address,
-    		'purpose' => request()->purpose
-    	]);
+        request()->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'middle_initial' => 'required',
+            'contact_number' => 'required',
+            'email_address' =>  'required',
+            'purpose' => 'required'
+        ]);
 
-    	return redirect('/borrowers');
+        $borrower = new Borrower;
+        $borrower->create([
+            // column => value
+            'first_name' => request()->first_name,
+            'last_name' => request()->last_name,
+            'middle_initial' => request()->middle_initial,
+            'contact_number' => request()->contact_number,
+            'email_address' =>  request()->email_address,
+            'purpose' => request()->purpose
+        ]);
+        return redirect('/borrowers');
+
     }
 
     public function show(Borrower $borrower){
@@ -43,7 +52,16 @@ class BorrowersController extends Controller
     }
 
     public function update(Borrower $borrower){
-    	$borrower->update([
+    	request()->validate([
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'middle_initial' => 'required',
+            'contact_number' => 'required',
+            'email_address' =>  'required',
+            'purpose' => 'required'
+        ]);
+
+        $borrower->update([
     		'first_name' => request()->first_name,
     		'last_name' => request()->last_name,
     		'middle_initial' => request()->middle_initial,
