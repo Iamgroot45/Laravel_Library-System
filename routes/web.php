@@ -33,3 +33,6 @@ Route::delete('/staff/delete/{id}', 'StaffController@destroy');
 
 
 
+Route::get('/login', function(){
+    return view('login');
+});
