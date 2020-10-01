@@ -16,23 +16,32 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-// Display all reservations
-Route::get('/dailyrecords', 'DailyrecordsController@index');
+// Display all dailyrecord
+Route::get('/dailyrecords', 'DailyrecordsController
+	@index');
 
-// Display form to create reservation
+// Display form to create dailyrecord
 Route::get('/dailyrecords/create', 'DailyrecordsController@create');
 
-// Display specific reservation
-Route::get('/dailyrecords/{dailyrecord}', 'DailyrecordsController@show');
+// Display specific dailyrecord
+Route::get('/dailyrecord/{dailyrecord}', 'DailyrecordsController@show');
 
-// Store a Reservation
+// Store a dailyrecord
 Route::post('/dailyrecords', 'DailyrecordsController@store');
 
-// Display form to update reservation
-Route::get('/dailyrecords/{dailyrecord}/edit', 'DailyrecordsController@edit');
+// Display form to update dailyrecord
+Route::get('/dailyrecord/{dailyrecord}/edit', 'DailyrecordsController@edit');
 
-// Update a Reservation
-Route::put('/dailyrecords/{dailyrecord}', 'DailyrecordsController@update');
+// Update a dailyrecord
+Route::put('/dailyrecord/{dailyrecord}', 'DailyrecordsController@update');
 
-// Delete a reservation
-Route::delete('/dailyrecords/{dailyrecord}/delete', 'DailyrecordsController@delete'); 
+// Delete a dailyrecord
+Route::delete('/dailyrecord/{dailyrecord}/delete', 'DailyrecordsController@delete'); 
+
+// Update a dailyrecord
+Route::put('/dailyrecords/{dailyrecord}', 'dailyrecordsController@update');
+
+// Delete a dailyrecord
+Route::delete('/dailyrecords/{dailyrecord}/delete', 'dailyrecordsController@delete');
+
+Route::get('/login', 'AuthController@index')->name('login');

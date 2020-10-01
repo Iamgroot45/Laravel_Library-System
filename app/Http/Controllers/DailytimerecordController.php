@@ -20,20 +20,30 @@ class daily_time_records extends Controller
     }
 
     public function store(){
-    	$current = Carbon::now();
-    	$dailyrecords = new dailyrecords;
-    	$dailyrecords->create([
-    		// column => value
-    		'ID' => request()->id,
-    		'staff_id' => request()->staff_id,
-    		'time_in' => request()->time_in,
-    		'time_out' => request()->time_out,
-    		'date'=>$current,
+    	request ()->validate([
+    		
+    		'ID' => 'required',
+    		'staff_id' => 'required',
+    		'time_in' => 'required',
+    		'time_out' => 'required',
+    		'date'=> 'required'
     		
 
     	]);
 
-    	return redirect('/dailyrecord');
+    	$current = Carbon::now();
+    	$dailyrecord = new Daily_time_records;
+    	$dailyrecord -> create([
+
+    		// column => value
+    	 	'ID' => request()-> ID,
+    		'staff_id_' => request()-> staff_id,
+    		'time_in' => request()-> time_in,
+    		'time_out' => request()-> time_out,
+    		'date' => current,
+    	]);	
+
+    	return redirect('/dailyrecords');
     }
 
     public function show(Dailyrecords $dailyrecords){
@@ -46,6 +56,16 @@ class daily_time_records extends Controller
     }
 
     public function update(Dailyrecords $dailyrecords){
+    	
+    	request ()->validate([
+    		
+    		'ID' =>'required',
+    		'staff_id' => 'required',
+    		'time_in' => 'required',
+    		'time_out' => 'required',
+    		'date'=> 'required'
+    	]);
+
     	$dailyrecords->update([
     		'ID' => request()->id,
     		'staff_id' => request()->staff_id,
