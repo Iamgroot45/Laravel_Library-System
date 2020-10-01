@@ -24,6 +24,17 @@ class BooksController extends Controller
 
     public function store(Request $request)
     {
+        request()->validate([
+            'isbn' => 'required|numeric',
+            'title' => 'required',
+            'publisher' => 'required',
+            'description' => 'required',
+            'summary' => 'required',
+            'publication_date' => 'required',
+            'book_location' => 'required',
+            'number_of_copies' => 'required|numeric'
+
+        ]);
         $book = new Book();
         $book -> create([
 
@@ -59,7 +70,17 @@ class BooksController extends Controller
 
     public function update(Book $book)
     {
+        request()->validate([
+            'isbn' => 'required|numeric',
+            'title' => 'required',
+            'publisher' => 'required',
+            'description' => 'required',
+            'summary' => 'required',
+            'publication_date' => 'required',
+            'book_location' => 'required',
+            'number_of_copies' => 'required|numeric'
 
+        ]);
         $book -> update([
 
             'isbn' => request() ->isbn,

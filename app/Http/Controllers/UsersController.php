@@ -23,6 +23,16 @@ class UsersController extends Controller
 
     public function store(Request $request)
     {
+
+        $validateThis =  request()->validate([
+            'username' => 'required|unique:users,username|email',
+            'password' => 'required',
+            'distinction' => 'required'
+
+
+        ]);
+        $validateThis['password'] = bcrypt($validateThis['password']);
+
         $user = new User();
         $user -> create([
 
@@ -50,6 +60,14 @@ class UsersController extends Controller
 
     public function update(User $user)
     {
+       $validateThis =  request()->validate([
+            'username' => 'required|unique:users,username|email',
+            'password' => 'required',
+            'distinction' => 'required'
+
+
+        ]);
+        $validateThis['password'] = bcrypt($validateThis['password']);
         $user -> update([
 
             'username' => request() ->username,
