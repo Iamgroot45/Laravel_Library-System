@@ -17,7 +17,6 @@ class CreateReservationsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('book_id')->nullable();
             $table->foreign('book_id')->references('id')->on('books');
-            $table->unsignedBigInteger('staff_id')->nullable();
             $table->date('reservation_date')->useCurrent();
             $table->date('pickup_date');
             $table->timestamps();
