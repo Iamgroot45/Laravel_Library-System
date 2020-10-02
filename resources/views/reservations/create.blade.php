@@ -18,8 +18,6 @@
 		@csrf
 		<label>Book ID: </label>
 		<input type="text " name="book_id" required placeholder="Book ID">
-		<label>Staff ID: </label>
-		<input type="text " name="staff_id" required placeholder="Staff ID">
 		<label>Pickup Date: YYYY-MM-DD</label>
 		<input type="text " name="pickup_date" required placeholder="PickUp">
 		

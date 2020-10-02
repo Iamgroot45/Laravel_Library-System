@@ -19,8 +19,6 @@
         @method('PUT')
         <label>Book ID:</label>
         <input type="text " name="book_id" value="{{ $reservation->book_id }}" required placeholder="Book ID">
-        <label>Staff ID:</label>
-        <input type="text " name="staff_id" value="{{ $reservation->staff_id }}" required placeholder="Staff ID">
         <label>Reservation Date:</label>
         <input type="text " name="reservation_date" value="{{ $reservation->reservation_date }}" required placeholder="Reservation Date">
         <label>Pickup Date:</label>

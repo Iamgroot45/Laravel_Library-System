@@ -10,7 +10,6 @@
 			<tr>
 				<th>ID</th>
 				<th>Book ID</th>
-				<th>Staff ID</th>
 				<th>Reservation Date</th>
 				<th>Pickup Date</th>
 			</tr>
@@ -20,7 +19,6 @@
 				<tr>
 					<td>{{ $reservation->id }}</td>
 					<td>{{ $reservation->book_id }}</td>
-					<td>{{ $reservation->staff_id }}</td>
 					<td>{{ $reservation->reservation_date}}</td>
 					<td>{{ $reservation->pickup_date }}</td>
 					 <td>
