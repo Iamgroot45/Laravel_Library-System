@@ -13,15 +13,16 @@ class CreateReservationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('reservations', function (Blueprint $table) {
+        Schema::create('book_reservations', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('book_id')->nullable();
-            $table->foreign('book_id')->references('id')->on('books');
-            $table->date('reservation_date')->useCurrent();
-            $table->date('pickup_date');
+            $table->foreignId('book_id')->constrained('books');
+            $table->foreignId('borrower_id')->constrained('borrowers');
+            $table->date('reservation_date');
+            $table->date('pickup_date')->nullable();
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
