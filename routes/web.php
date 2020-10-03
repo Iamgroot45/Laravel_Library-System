@@ -98,3 +98,32 @@ Route::put('/borrowers/{borrower}', 'BorrowersController@update');
 
 // Delete a borrower
 Route::delete('/borrowers/{borrower}/delete', 'BorrowersController@delete');
+// Display all dailyrecord
+Route::get('/dailyrecords', 'DailyrecordsController
+	@index');
+
+// Display form to create dailyrecord
+Route::get('/dailyrecords/create', 'DailyrecordsController@create');
+
+// Display specific dailyrecord
+Route::get('/dailyrecord/{dailyrecord}', 'DailyrecordsController@show');
+
+// Store a dailyrecord
+Route::post('/dailyrecords', 'DailyrecordsController@store');
+
+// Display form to update dailyrecord
+Route::get('/dailyrecord/{dailyrecord}/edit', 'DailyrecordsController@edit');
+
+// Update a dailyrecord
+Route::put('/dailyrecord/{dailyrecord}', 'DailyrecordsController@update');
+
+// Delete a dailyrecord
+Route::delete('/dailyrecord/{dailyrecord}/delete', 'DailyrecordsController@delete');
+
+// Update a dailyrecord
+Route::put('/dailyrecords/{dailyrecord}', 'dailyrecordsController@update');
+
+// Delete a dailyrecord
+Route::delete('/dailyrecords/{dailyrecord}/delete', 'dailyrecordsController@delete');
+
+Route::get('/login', 'AuthController@index')->name('login');
