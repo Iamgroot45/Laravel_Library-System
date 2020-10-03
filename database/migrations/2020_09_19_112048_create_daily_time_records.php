@@ -15,11 +15,10 @@ class CreateDailyTimeRecords extends Migration
     {
         Schema::create('daily_time_records', function (Blueprint $table) {
             $table->id();
-            $table->foreign('staff_id')->references('id')->on('staff');
+            $table->unsignedBigInteger('staff_id');
             $table->time('time_in');
-            $table->time('time_out');
+            $table->time('time_out')->nullable();
             $table->date('date');
-            $table->timestamps();
         });
     }
 
