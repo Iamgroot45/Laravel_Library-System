@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDailyTimeRecords extends Migration
+class AlterStaffTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateDailyTimeRecords extends Migration
      */
     public function up()
     {
-        Schema::create('daily_time_records', function (Blueprint $table) {
-            $table->id();
-            $table->time('time_in');
-            $table->time('time_out')->nullable();
-            $table->date('date');
+        //
+        Schema::table('staff', function (Blueprint $table) {
+            $table->foreignId('user_id')->constrained('users');
         });
     }
 
@@ -28,6 +26,6 @@ class CreateDailyTimeRecords extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('daily_time_records');
+        //
     }
 }
