@@ -10,5 +10,13 @@ class User extends Authenticatable
 {
 
     protected $guarded = [];
+    public $timestamps = false;
 
+    public function borrower(){
+        return $this->hasMany('App\Borrower', 'user_id');
+    }
+
+    public function staff(){
+        return $this->hasMany('App\Borrower', 'user_id');
+    }
 }

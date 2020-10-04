@@ -16,6 +16,11 @@ class AlterBorrowersTable extends Migration
         //
         Schema::table('borrowers', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained('users');
+            $table->string('last_name');
+            $table->string('first_name');
+            $table->string('middle_initial');
+            $table->string('contact_number')->unique();
+            $table->string('email_address')->unique();
         });
     }
 

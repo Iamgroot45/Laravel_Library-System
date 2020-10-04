@@ -15,9 +15,6 @@ class CreateDailyTimeRecords extends Migration
     {
         Schema::create('daily_time_records', function (Blueprint $table) {
             $table->id();
-            $table->time('time_in');
-            $table->time('time_out')->nullable();
-            $table->date('date');
         });
     }
 

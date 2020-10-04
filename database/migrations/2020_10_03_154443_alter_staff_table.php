@@ -16,6 +16,11 @@ class AlterStaffTable extends Migration
         //
         Schema::table('staff', function (Blueprint $table) {
             $table->foreignId('user_id')->constrained('users');
+            $table->string('last_name');
+            $table->string('first_name');
+            $table->string('middle_initial');
+            $table->string('position');
+            $table->string('area_assigned');
         });
     }
 

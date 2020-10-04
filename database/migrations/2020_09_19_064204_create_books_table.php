@@ -20,10 +20,10 @@ class CreateBooksTable extends Migration
             $table->longText('description')->nullable();
             $table->longText('summary')->nullable();
             $table->string('publisher');
-            $table->date('publication_date');
+            $table->string('publication_year');
             $table->string('book_location');
             $table->integer('no_of_copies');
-            $table->integer('copies_available');
+            $table->integer('available_copies');
             $table->integer('rating_1')->nullable();
             $table->integer('rating_2')->nullable();
             $table->integer('rating_3')->nullable();

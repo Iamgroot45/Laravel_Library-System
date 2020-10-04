@@ -18,6 +18,10 @@ class AlterBorrowedBooksTable extends Migration
             $table->foreignId('book_id')->constrained('books');
             $table->foreignId('borrower_id')->constrained('borrowers');
             $table->foreignId('staff_id')->constrained('staff');
+            $table->date('date_borrowed')->nullable();
+            $table->date('due_date')->nullable();
+            $table->string('status');
+            $table->date('date_returned')->nullable();
         });
     }
 

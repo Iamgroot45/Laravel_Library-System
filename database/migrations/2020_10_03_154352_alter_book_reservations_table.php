@@ -17,6 +17,8 @@ class AlterBookReservationsTable extends Migration
         Schema::table('book_reservations', function (Blueprint $table) {
             $table->foreignId('book_id')->constrained('books');
             $table->foreignId('borrower_id')->constrained('borrowers');
+            $table->date('reservation_date');
+            $table->date('pickup_date')->nullable();
         });
     }
 

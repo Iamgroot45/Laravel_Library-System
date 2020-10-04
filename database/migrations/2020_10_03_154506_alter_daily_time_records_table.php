@@ -16,6 +16,9 @@ class AlterDailyTimeRecordsTable extends Migration
         //
         Schema::table('daily_time_records', function (Blueprint $table) {
             $table->foreignId('staff_id')->constrained('staff');
+            $table->time('time_in');
+            $table->time('time_out')->nullable();
+            $table->date('date');
         });
     }
 

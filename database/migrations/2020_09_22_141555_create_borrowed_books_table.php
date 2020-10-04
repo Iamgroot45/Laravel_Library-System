@@ -15,10 +15,6 @@ class CreateBorrowedBooksTable extends Migration
     {
         Schema::create('borrowed_books', function (Blueprint $table) {
             $table->id();
-            $table->date('date_borrowed')->nullable();
-            $table->date('due_date')->nullable();
-            $table->string('status');
-            $table->date('date_returned')->nullable();
         });
     }
 
