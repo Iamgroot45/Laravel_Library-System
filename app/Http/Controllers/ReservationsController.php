@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 //model
-use App\Reservation;
+use App\BookReservation;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -17,7 +17,7 @@ class ReservationsController extends Controller
     public function index()
     {
         //fetch all reservation
-        $reservations = Reservation::all();
+        $reservations = BookReservation::all();
         //return view
         return view('reservations.index' , compact('reservations'));
     }
@@ -38,7 +38,7 @@ class ReservationsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(Request $request)
     {
         request()->validate([
             'book_id' => 'required',
@@ -46,12 +46,11 @@ class ReservationsController extends Controller
         ]);
 
         $current = Carbon::now();
-        $reservation = new Reservation;
-        $reservation->create([
+        $reservation = BookReservation::create([
             // column => value
-            'book_id' => request()->book_id,
-            'reservation_date'=>$current,
-            'pickup_date' =>  request()->pickup_date
+            'book_id' => $request->book_id,
+            'reservation_date' => $current,
+            'pickup_date' =>  $request->pickup_date
         ]);
 
         return redirect('/reservations');
@@ -63,9 +62,10 @@ class ReservationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Reservation $reservation)
+    public function show($id)
     {
-        // $reservation  = Reservation::find($reservation_id);
+        // $reservation  = BookReservation::find($reservation_id);
+        $reservation = BookReservation::find($id);
         return view('reservations.show', compact('reservation'));
     }
 
@@ -75,8 +75,9 @@ class ReservationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reservation $reservation)
+    public function edit($id)
     {
+        $reservation = BookReservation::find($id);
         return view('reservations.edit', compact('reservation'));
     }
 
@@ -87,18 +88,19 @@ class ReservationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Reservation $reservation)
+    public function update(Request $request, $id)
     {
-        request()->validate([
+        $request->validate([
             'book_id'=>'required',
             'reservation_date'=>'required',
             'pickup_date'=>'required',
         ]);
 
+        $reservation = BookReservation::find($id);
         $reservation->update([
-            'book_id' => request()->book_id,
-            'reservation_date' => request()->reservation_date,
-            'pickup_date' =>  request()->pickup_date
+            'book_id' => $request->book_id,
+            'reservation_date' => $request->reservation_date,
+            'pickup_date' =>  $request->pickup_date
         ]);
 
         return redirect('/reservations');
@@ -110,10 +112,9 @@ class ReservationsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function delete(Reservation $reservation)
+    public function destroy($id)
     {
-        $reservation->delete();
+        BookReservation::destroy($id);
         return redirect('/reservations');
     }
-
 }

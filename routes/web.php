@@ -98,7 +98,7 @@ Route::put('/borrowers/{borrower}', 'BorrowersController@update');
 Route::delete('/borrowers/{borrower}/delete', 'BorrowersController@delete');
 // Display all dailyrecord
 
-Route::get('/dailyrecords', 'DailyrecordsController@index');
+/*Route::get('/dailyrecords', 'DailyrecordsController@index');
 
 // Display form to create dailyrecord
 Route::get('/dailyrecords/create', 'DailyrecordsController@create');
@@ -124,28 +124,10 @@ Route::put('/dailyrecords/{dailyrecord}', 'dailyrecordsController@update');
 // Delete a dailyrecord
 Route::delete('/dailyrecords/{dailyrecord}/delete', 'dailyrecordsController@delete');
 
-Route::get('/login', 'AuthController@index')->name('login');
+Route::get('/login', 'AuthController@index')->name('login');*/
 
-// Display all reservations
-Route::resource('/reservations', 'ReservationsController@index');
-
-// Display form to create reservation
-Route::resource('/reservations/create', 'ReservationsController@create');
-
-// Display specific reservation
-Route::resource('/reservations/{reservation}', 'ReservationsController@show');
-
-// Store a Reservation
-Route::resource('/reservations', 'ReservationsController@store');
-
-// Display form to update reservation
-Route::resource('/reservations/{reservation}/edit', 'ReservationsController@edit');
-
-// Update a Reservation
-Route::resource('/reservations/{reservation}', 'ReservationsController@update');
-
-// Delete a reservation
-Route::resource('/reservations/{reservation}/delete', 'ReservationsController@destory');
+// --------------------- R E S E R V A T I O N S ----------------------------
+Route::resource('reservations', 'ReservationsController');
 
 Route::get('/login', 'AuthController@index')->name('login');
 

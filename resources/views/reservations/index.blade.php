@@ -28,7 +28,7 @@
                         <a href="/reservations/{{$reservation->id}}/edit">Edit</a>
                     </td>
                     <td>
-                        <form action="/reservations/{{$reservation->id}}/delete" method="POST">
+                        <form action="/reservations/{{$reservation->id}}" method="POST">
                             @csrf
                             @method('delete')
                             <input type="submit" name="delete" value="delete">
