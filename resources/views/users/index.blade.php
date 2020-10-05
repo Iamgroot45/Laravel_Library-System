@@ -31,7 +31,7 @@
                             <a href="/users/{{$user->id}}/edit">Edit</a>
 
 
-                            <form action='/users/{{$user->id}}/delete' method="POST">
+                            <form action='/users/{{$user->id}}' method="POST">
                                 @csrf
 
                                 @method('DELETE')

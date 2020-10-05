@@ -40,7 +40,7 @@
                             <a href="/books/{{$book->id}}/edit">Edit</a>
 
 
-                            <form action='/books/{{$book->id}}/delete' method="POST">
+                            <form action='/books/{{$book->id}}' method="POST">
                                 @csrf
 
                                 @method('DELETE')
