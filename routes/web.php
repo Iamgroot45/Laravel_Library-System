@@ -97,32 +97,31 @@ Route::put('/borrowers/{borrower}', 'BorrowersController@update');
 // Delete a borrower
 Route::delete('/borrowers/{borrower}/delete', 'BorrowersController@delete');
 // Display all dailyrecord
-Route::get('/dailyrecords', 'DailyrecordsController
-	@index');
+//Route::get('/dailyrecords', 'DailyrecordsController@index');
 
 // Display form to create dailyrecord
-Route::get('/dailyrecords/create', 'DailyrecordsController@create');
+//Route::get('/dailyrecords/create', 'DailyrecordsController@create');
 
 // Display specific dailyrecord
-Route::get('/dailyrecord/{dailyrecord}', 'DailyrecordsController@show');
+//Route::get('/dailyrecord/{dailyrecord}', 'DailyrecordsController@show');
 
-// Store a dailyrecord
-Route::post('/dailyrecords', 'DailyrecordsController@store');
+//// Store a dailyrecord
+//Route::post('/dailyrecords', 'DailyrecordsController@store');
 
 // Display form to update dailyrecord
-Route::get('/dailyrecord/{dailyrecord}/edit', 'DailyrecordsController@edit');
+//Route::get('/dailyrecord/{dailyrecord}/edit', 'DailyrecordsController@edit');
 
 // Update a dailyrecord
-Route::put('/dailyrecord/{dailyrecord}', 'DailyrecordsController@update');
+//Route::put('/dailyrecord/{dailyrecord}', 'DailyrecordsController@update');
 
 // Delete a dailyrecord
-Route::delete('/dailyrecord/{dailyrecord}/delete', 'DailyrecordsController@delete');
+//Route::delete('/dailyrecord/{dailyrecord}/delete', 'DailyrecordsController@delete');
 
 // Update a dailyrecord
-Route::put('/dailyrecords/{dailyrecord}', 'dailyrecordsController@update');
+//Route::put('/dailyrecords/{dailyrecord}', 'dailyrecordsController@update');
 
 // Delete a dailyrecord
-Route::delete('/dailyrecords/{dailyrecord}/delete', 'dailyrecordsController@delete');
+//Route::delete('/dailyrecords/{dailyrecord}/delete', 'dailyrecordsController@delete');
 
 Route::get('/login', 'AuthController@index')->name('login');
 // Display all reservations
@@ -147,47 +146,13 @@ Route::put('/reservations/{reservation}', 'ReservationsController@update');
 Route::delete('/reservations/{reservation}/delete', 'ReservationsController@delete');
 
 Route::get('/login', 'AuthController@index')->name('login');
-// Get /authors/create display the create form
-Route::get('/authors/create','AuthorsController@create');
-
-// ----edit
-Route::get('/authors/{author}/edit', 'AuthorsController@edit');
-
-// display one ---
-Route::get('/authors/{author}','AuthorsController@show');
-
-// Store author
-Route::post('/authors','AuthorsController@store');
-
-// Get /authors/{author}/update display the update form
-Route::put('/authors/{author}', 'AuthorsController@update');
-
-// Delete /authors/{author} delete a record
-Route::delete('/authors/{author}','AuthorsController@destroy');
-
-// display all ---
-Route::get('/authors','AuthorsController@index');
 
 
 
-// Get /book_authors/create display the create form
-Route::get('/book_authors/create','BooksAuthorController@create');
+// Authors
+Route::resource('authors', 'AuthorsController');
 
-// ----edit ----
-Route::get('/book_authors/{book_author}/edit', 'BooksAuthorController@edit');
+// Book_authors
+Route::resource('book_authors', 'BooksAuthorController');
 
-// display one ------
-Route::get('/book_authors/{book_author}','BooksAuthorController@show');
-
-// Store book_author ID
-Route::post('/book_authors','BooksAuthorController@store');
-
-// Get /book_authors/{book_author}/update display the update form ---
-Route::put('/book_authors/{book_author}', 'BooksAuthorController@update');
-
-// Delete /book_authors/{author} delete a record----
-Route::delete('/book_authors/{book_author}','BooksAuthorController@destroy');
-
-// BooksAuthor Table display all-----
-Route::get('/book_authors','BooksAuthorController@index');
 

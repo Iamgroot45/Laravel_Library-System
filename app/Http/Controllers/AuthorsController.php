@@ -3,70 +3,122 @@
 namespace App\Http\Controllers;
 
 use App\Author;
+
 use Illuminate\Http\Request;
 
 class AuthorsController extends Controller
 {
-	public function index()
-	{
-    	$authors = Author::all();
-    	return view('authors.index', compact('authors'));
-	}
-
-	public function show(Author $author)
-	{
-
-    	return view('authors.show', compact('author'));
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+        $authors = Author::all();
+        return view('authors.index', compact('authors'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-    	return view('authors.create');
+        //
+        return view('authors.create');
     }
 
-    public function store()
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-    	request()->validate([
+        //
+        request()->validate([
             'first_name' => 'required',
             'last_name' => 'required',
             'middle_initial' => 'required',    
         ]);
 
-    	$author = new Author;
-		$author->create([
+        $author = Author::create([
             'first_name' => request()->first_name,
             'last_name' => request()->last_name,
             'middle_initial' => request()->middle_initial,
         ]);
-    	return redirect('/authors');
+        return redirect('/authors');
     }
 
-    public function edit(Author $author)
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
-    	return view('authors.edit', compact('author'));
+        //
+        $author = Author::find($id);
+
+        return view('authors.show', compact('author'));
     }
 
-    public function update(Author $author)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
     {
-    	request()->validate([
+        //
+        $author = Author::find($id);
+
+        return view('authors.show', compact('author'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+        request()->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'middle_initial' => 'required',   
+            'middle_initial' => 'required',    
         ]);
 
-		$author->update([
-            'first_name' => request()->first_name,
-            'last_name' => request()->last_name,
-            'middle_initial' => request()->middle_initial,
+        $author = Author::find($id);
+        $author ->update ([
+            'first_name' => $request->input(first_name),
+            'last_name' => $request->input(last_name),
+            'middle_initial' => $request->input(middle_initial),
         ]);
-    	return redirect('/authors');
-
+        return redirect('/authors');
     }
 
-    public function destroy(Author $author)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $ids
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
     {
-    	$author->delete();
-    	return redirect ('/authors');
+        //
+        Author::destroy($id);
+
+        return redirect('/authors');
     }
 
 }

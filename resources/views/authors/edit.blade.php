@@ -5,6 +5,7 @@
 </head>
 <body>
 	<form action="/authors/{{ $author->id }}" method="POST">
+		
 		@if ($errors->any())
         <div class="alert alert-danger">
             <ul>
