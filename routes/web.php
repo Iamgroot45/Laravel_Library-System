@@ -15,6 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'TestController@index');
 
+//Route::resource('test', 'TestController');
+
 // SHOW ALL STAFF PERSONNEL
 Route::get('/staff', 'StaffController@index');
 
