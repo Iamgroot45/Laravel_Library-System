@@ -13,16 +13,16 @@ class BorrowedBooksController extends Controller
         return view('borrowed_books.index',compact('borrowed_books'));
     }
 
-    public function show(BorrowedBook $borrowed_book){
-        return view('borrowed_books.show',compact('borrowed_book'));
+    public function show($id){
+        $borrowed_book = BorrowedBook::find($id);
+        return view('borrowed_books.show',compact('borrowed_book'));      
     }
 
     public function create(){
-        
         return view('borrowed_books.create');
     }
 
-    public function store(){
+    public function store(Request $request){
 
         request()->validate([
             'book' => 'required',
@@ -32,49 +32,40 @@ class BorrowedBooksController extends Controller
         ]);
 
         $current = Carbon::now();
-        $borrowed_book = new BorrowedBook;
-        $borrowed_book->create([
-            'book_id' => request()->book,
-            'borrower_id' => request()->borrower,
-            'borrowed_date' => $current,
+        $borrowed_book = BorrowedBook:: create([
+            'book_id' => $request->book,
+            'borrower_id' => $request->borrower,
+            'staff_id' => $request->staff,
+            'date_borrowed' => $current,
             'due_date' => $current,
-            'returned' => $current,
-            'staff_id' => request()->staff,
-            'status' => request()->stats
+            'status' => $request->stats
         ]);
-        return redirect('/borrowed_books');
+        return redirect('/borrowed');
     }
 
-    public function edit(BorrowedBook $borrowed_book){
+    public function edit($id){
+        $borrowed_book = BorrowedBook::find($id);
         return view('borrowed_books.edit', compact('borrowed_book'));
-    
     }
 
-    public function update(BorrowedBook $borrowed_book){
+    public function update(Request $request){
 
         request()->validate([
-            'book' => 'required',
-            'borrower' => 'required',
-            'staff' => 'required',
             'stats' => 'required',    
         ]);
 
         $current = Carbon::now();
-        $borrowed_book->update([
-            'book_id' => request()->book,
-            'borrower_id' => request()->borrower,
-            'borrowed_date' => $current,
+        $borrowed_book = BorrowedBook:: create([
+            'date_borrowed' => $current,
             'due_date' => $current,
-            'returned' => $current,
-            'staff_id' => request()->staff,
-            'status' => request()->stats
+            'status' => $request->stats
         ]);
-        return redirect('/borrowed_books');
+        return redirect('/borrowed');
     }
 
-    public function delete(BorrowedBook $borrowed_book){
-        $borrowed_book->delete();
-        return redirect('/borrowed_books');
+    public function destroy($id){
+        BorrowedBook::destroy($id);
+        return redirect('/borrowed');
     }
 
 
