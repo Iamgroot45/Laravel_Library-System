@@ -26,58 +26,61 @@ class UsersController extends Controller
     public function store(Request $request)
     {
 
-        request()->validate([
+        $request->validate([
             'username' => 'required|unique:users,username|email',
             'password' => 'required',
             'distinction' => 'required'
         ]);
 
-        $user = new User();
-        $user -> create([
-            'username' => request()->username,
-            'password' => Hash::make(request()->password),
-            'distinction' => request()->distinction
+
+        $user = User::create([
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'distinction' => $request->distinction
         ]);
 
         return redirect ('/users');
     }
 
 
-    public function show(User $user)
+    public function show($id)
     {
+        $user = User::find($id);
         return view ('users.show', compact('user'));
     }
 
 
-    public function edit(User $user)
+    public function edit($id)
     {
+        $user = User::find($id);
         return view ('users.edit', compact('user'));
 
     }
 
 
-    public function update(User $user)
+    public function update(Request $request, $id)
     {
-       $validateThis =  request()->validate([
+        $request->validate([
             'username' => 'required|unique:users,username|email',
             'password' => 'required',
             'distinction' => 'required'
         ]);
 
-        $validateThis['password'] = bcrypt($validateThis['password']);
-
+        $user = User::find($id);
         $user -> update([
 
-            'username' => request() ->username,
-            'password' => request() ->password,
-            'distinction' => request() ->distinction
+            'username' => $request ->username,
+            'password' => $request ->password,
+            'distinction' => $request ->distinction
         ]);
+
+        return redirect('/users');
     }
 
 
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        $user->delete();
+        User::destroy($id);
         return redirect('/users');
     }
 }

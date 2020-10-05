@@ -61,7 +61,7 @@ Route::get('/books/{book}', 'BooksController@show');
 Route::post('/books', 'BooksController@store');
 Route::get('/books/{book}/edit', 'BooksController@edit');
 Route::put('/books/{book}', 'BooksController@update');
-Route::delete('/books/{book}/delete', 'BooksController@delete');
+Route::delete('/books/{book}/delete', 'BooksController@destroy');
 
 
 //for users

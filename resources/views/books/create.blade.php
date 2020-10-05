@@ -39,8 +39,8 @@
         <input type="text" name="summary">
 
         <br>
-        <label>Publication Date:</label>
-        <input type="text" name="publication_date">
+        <label>Publication Year:</label>
+        <input type="text" name="publication_year">
 
         <br>
         <label>Book Location:</label>
