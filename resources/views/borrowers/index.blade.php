@@ -31,7 +31,7 @@
 						<a href="/borrowers/{{ $borrower->id }}/edit"> Edit </a>
 						<!-- link for deleting -->
 						<!-- <a href="/borrowers/{{ $borrower->id }}/delete"> Delete </a> -->
-						<form action="/borrowers/{{ $borrower->id }}/delete" method="POST">
+						<form action="/borrowers/{{ $borrower->id }}" method="POST">
 							@csrf
 							@method('DELETE')
 							<input type="submit" name="delete" value="delete">
