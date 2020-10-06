@@ -11,3 +11,4 @@ class BookAuthor extends Pivot
     protected $guarded = [];
     public $timestamps = false;
 }
+
