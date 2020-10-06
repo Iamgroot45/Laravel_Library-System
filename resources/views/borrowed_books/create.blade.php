@@ -3,7 +3,7 @@
 @section('contents')
     
 
-    <form action="/borrowed_books" method="POST">
+    <form action="/borrowed" method="POST">
 
         @if ($errors->any())
         <div class="alert alert-danger">

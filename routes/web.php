@@ -29,9 +29,11 @@ Route::post('/login/authenticate', 'AuthController@login');
 
 Route::get('/logout', 'AuthController@logout')->name('logout');
 
-Route::get('/borrowed_books', 'BorrowedBooksController@index');
+//For Borrowed Books
 
-Route::get('/borrowed_books/create', 'BorrowedBooksController@create');
+Route::resource('borrowed', 'BorrowedBooksController');
+
+/* Route::get('/borrowed_books/create', 'BorrowedBooksController@create');
 
 Route::get('/borrowed_books/{borrowed_book}', 'BorrowedBooksController@show');
 
@@ -42,6 +44,7 @@ Route::get('/borrowed_books/{borrowed_book}/edit', 'BorrowedBooksController@edit
 Route::put('/borrowed_books/{borrowed_book}', 'BorrowedBooksController@update');
 
 Route::delete('/borrowed_books/{borrowed_book}/delete', 'BorrowedBooksController@delete');
+*/
 
 /*for books
 Route::get('/books', 'BooksController@index');
