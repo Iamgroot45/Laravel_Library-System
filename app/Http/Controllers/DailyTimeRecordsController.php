@@ -3,14 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\DailyTimeRecord;
-use Carbon\Carbon;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 
 class DailyTimeRecordsController extends Controller
 {
-
-
-  public function index(){
+    public function index(){
     	$dailyrecords = DailyTimeRecord::all();
     	return view('dailyrecords.index' , compact('dailyrecord'));
     }
@@ -85,9 +83,4 @@ class DailyTimeRecordsController extends Controller
     	$dailyrecords->delete();
     	return redirect('/dailyrecords');
 }
-
-
-
-
-     //
 }

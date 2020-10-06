@@ -68,35 +68,37 @@ Route::delete('/users/{user}/delete', 'UsersController@destroy');
 
 Route::resource('borrowers', 'BorrowersController');
 
-// ---------------------BORROWERS-------------------------
+// -------------------------------------------------------
 
-// // Display all dailyrecord
-// Route::get('/dailyrecords', 'DailyrecordsController
-// 	@index');
+Route::resource('dailytimerecord', 'DailyTimeRecordsController');
 
-// // Display form to create dailyrecord
-// Route::get('/dailyrecords/create', 'DailyrecordsController@create');
+//----------------------------------------------------
+// Display all dailyrecord
+//Route::get('/dailyrecords', 'DailyrecordsController');
 
-// // Display specific dailyrecord
-// Route::get('/dailyrecord/{dailyrecord}', 'DailyrecordsController@show');
+// Display form to create dailyrecord
+//Route::get('/dailyrecords/create', 'DailyrecordsController@create');
 
-// // Store a dailyrecord
-// Route::post('/dailyrecords', 'DailyrecordsController@store');
+// Display specific dailyrecord
+//Route::get('/dailyrecord/{dailyrecord}', 'DailyrecordsController@show');
 
-// // Display form to update dailyrecord
-// Route::get('/dailyrecord/{dailyrecord}/edit', 'DailyrecordsController@edit');
+// Store a dailyrecord
+//Route::post('/dailyrecords', 'DailyrecordsController@store');
 
-// // Update a dailyrecord
-// Route::put('/dailyrecord/{dailyrecord}', 'DailyrecordsController@update');
+// Display form to update dailyrecord
+//Route::get('/dailyrecord/{dailyrecord}/edit', 'DailyrecordsController@edit');
 
-// // Delete a dailyrecord
-// Route::delete('/dailyrecord/{dailyrecord}/delete', 'DailyrecordsController@delete');
+// Update a dailyrecord
+//Route::put('/dailyrecord/{dailyrecord}', 'DailyrecordsController@update');
 
-// // Update a dailyrecord
-// Route::put('/dailyrecords/{dailyrecord}', 'dailyrecordsController@update');
+// Delete a dailyrecord
+//Route::delete('/dailyrecord/{dailyrecord}/delete', 'DailyrecordsController@delete');
 
-// // Delete a dailyrecord
-// Route::delete('/dailyrecords/{dailyrecord}/delete', 'dailyrecordsController@delete');
+// Update a dailyrecord
+//Route::put('/dailyrecords/{dailyrecord}', 'dailyrecordsController@update');
+
+// Delete a dailyrecord
+//Route::delete('/dailyrecords/{dailyrecord}/delete', 'dailyrecordsController@delete');
 
 Route::get('/login', 'AuthController@index')->name('login');
 // Display all reservations
