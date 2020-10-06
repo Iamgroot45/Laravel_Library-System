@@ -24,28 +24,28 @@ class BooksController extends Controller
 
     public function store(Request $request)
     {
-        request()->validate([
-            'isbn' => 'required|numeric',
+        $request->validate([
+            'isbn' => 'required',
             'title' => 'required',
             'publisher' => 'required',
             'description' => 'required',
             'summary' => 'required',
-            'publication_date' => 'required',
+            'publication_year' => 'required',
             'book_location' => 'required',
-            'number_of_copies' => 'required|numeric'
+            'no_of_copies' => 'required|numeric'
 
         ]);
         $book = new Book();
         $book -> create([
 
-            'isbn' => request() ->isbn,
-            'title' => request() ->title,
-            'publisher' => request() ->publisher,
-            'description' => request() ->description,
-            'summary' => request() ->summary,
-            'publication_date' => request() ->publication_date,
-            'book_location' => request() ->book_location,
-            'number_of_copies' => request() ->no_of_copies
+            'isbn' => $request ->isbn,
+            'title' => $request ->title,
+            'publisher' => $request ->publisher,
+            'description' => $request ->description,
+            'summary' => $request ->summary,
+            'publication_year' => $request ->publication_year,
+            'book_location' => $request ->book_location,
+            'no_of_copies' => $request ->no_of_copies
 
         ]);
 
@@ -53,53 +53,54 @@ class BooksController extends Controller
     }
 
 
-    public function show(Book $book)
+    public function show($id)
     {
-
+        $book = Book::find($id);
         return view ('books.show', compact('book'));
     }
 
 
-    public function edit(Book $book)
+    public function edit($id)
     {
-
+        $book = Book::find($id);
         return view ('books.edit', compact('book'));
 
     }
 
 
-    public function update(Book $book)
+    public function update(Request $request, $id)
     {
-        request()->validate([
-            'isbn' => 'required|numeric',
+        $request->validate([
+            'isbn' => 'required',
             'title' => 'required',
             'publisher' => 'required',
             'description' => 'required',
             'summary' => 'required',
-            'publication_date' => 'required',
+            'publication_year' => 'required',
             'book_location' => 'required',
-            'number_of_copies' => 'required|numeric'
+            'no_of_copies' => 'required|numeric'
 
         ]);
+
+        $book = Book::find($id);
         $book -> update([
-
-            'isbn' => request() ->isbn,
-            'title' => request() ->title,
-            'publisher' => request() ->publisher,
-            'description' => request() ->description,
-            'summary' => request() ->summary,
-            'publication_date' => request() ->publication_date,
-            'book_location' => request() ->book_location,
-            'number_of_copies' => request() ->no_of_copies
+            'isbn' => $request ->isbn,
+            'title' => $request ->title,
+            'publisher' => $request ->publisher,
+            'description' => $request ->description,
+            'summary' => $request ->summary,
+            'publication_year' => $request ->publication_year,
+            'book_location' => $request ->book_location,
+            'no_of_copies' => $request ->no_of_copies
         ]);
 
+        return redirect('/books');
     }
 
-
-    public function delete(Book $book)
+    public function destroy($id)
     {
 
-        $book->delete();
+        Book::destroy($id);
         return redirect('/books');
 
     }

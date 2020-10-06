@@ -43,17 +43,18 @@ Route::put('/borrowed_books/{borrowed_book}', 'BorrowedBooksController@update');
 
 Route::delete('/borrowed_books/{borrowed_book}/delete', 'BorrowedBooksController@delete');
 
-//for books
+/*for books
 Route::get('/books', 'BooksController@index');
 Route::get('/books/create', 'BooksController@create');
 Route::get('/books/{book}', 'BooksController@show');
 Route::post('/books', 'BooksController@store');
 Route::get('/books/{book}/edit', 'BooksController@edit');
 Route::put('/books/{book}', 'BooksController@update');
-Route::delete('/books/{book}/delete', 'BooksController@delete');
-
-
-//for users
+Route::delete('/books/{book}/delete', 'BooksController@destroy');
+*/
+Route::resource('books', 'BooksController');
+Route::resource('users', 'UsersController');
+/*for users
 Route::get('/users', 'UsersController@index');
 Route::get('/users/create', 'UsersController@create')->name('register');
 Route::get('/users/{user}', 'UsersController@show');
@@ -61,7 +62,7 @@ Route::post('/users', 'UsersController@store');
 Route::get('/users/{user}/edit', 'UsersController@edit');
 Route::put('/users/{user}', 'UsersController@update');
 Route::delete('/users/{user}/delete', 'UsersController@destroy');
-
+*/
 
 
 // Display all borrowers
@@ -86,8 +87,7 @@ Route::put('/borrowers/{borrower}', 'BorrowersController@update');
 // Delete a borrower
 Route::delete('/borrowers/{borrower}/delete', 'BorrowersController@delete');
 
-
-/* // Display all dailyrecord
+/* Display all dailyrecord
 Route::get('/dailyrecords', 'DailyrecordsController
 	@index');
 
@@ -113,7 +113,8 @@ Route::delete('/dailyrecord/{dailyrecord}/delete', 'DailyTimeRecordsController@d
 Route::put('/dailyrecords/{dailyrecord}', 'DailyTimeRecordsController@update');
 
 // Delete a dailyrecord
-Route::delete('/dailyrecords/{dailyrecord}/delete', 'DailyTimeRecordsController@delete'); */
+Route::delete('/dailyrecords/{dailyrecord}/delete', 'dailyrecordsController@delete');
+*/
 
 Route::get('/login', 'AuthController@index')->name('login');
 // Display all reservations
