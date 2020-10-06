@@ -43,10 +43,10 @@
                                 <a href="/staff/{{ $info->id }}" class="btn btn-dark">Show</a>
                             </td>
                             <td>
-                                <a href="/staff/edit/{{ $info->id }}" class="btn btn-dark">Update</a>
+                                <a href="/staff/{{ $info->id }}" class="btn btn-dark">Update</a>
                             </td>
                             <td>
-                                <form action="/staff/delete/{{ $info->id }}" method="POST">
+                                <form action="/staff/{{ $info->id }}/edit" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <input type="submit" class="btn btn-dark" value="Delete">

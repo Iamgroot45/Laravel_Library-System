@@ -66,12 +66,13 @@ class StaffController extends Controller
         ]);
 
         $staff = Staff::find($id);
-        $staff->last_name = $request->input('last_name');
-        $staff->first_name = $request->input('first_name');
-        $staff->middle_initial = $request->input('middle_initial');
-        $staff->position = $request->input('position');
-        $staff->area_assigned = $request->input('area_assigned');
-        $staff->save();
+        $staff -> update([
+            'last_name' => $request->input('last_name'),
+            'first_name' => $request->input('first_name'),
+            'middle_initial' => $request->input('middle_initial'),
+            'position' => $request->input('position'),
+            'area_assigned' => $request->input('area_assigned')
+        ]);
 
         return redirect('/staff');
     }

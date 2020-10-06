@@ -18,7 +18,7 @@ class BorrowedBooksController extends Controller
     }
 
     public function create(){
-        
+
         return view('borrowed_books.create');
     }
 
@@ -28,7 +28,7 @@ class BorrowedBooksController extends Controller
             'book' => 'required',
             'borrower' => 'required',
             'staff' => 'required',
-            'stats' => 'required',    
+            'stats' => 'required',
         ]);
 
         $current = Carbon::now();
@@ -47,7 +47,7 @@ class BorrowedBooksController extends Controller
 
     public function edit(BorrowedBook $borrowed_book){
         return view('borrowed_books.edit', compact('borrowed_book'));
-    
+
     }
 
     public function update(BorrowedBook $borrowed_book){
@@ -56,7 +56,7 @@ class BorrowedBooksController extends Controller
             'book' => 'required',
             'borrower' => 'required',
             'staff' => 'required',
-            'stats' => 'required',    
+            'stats' => 'required',
         ]);
 
         $current = Carbon::now();
@@ -76,7 +76,4 @@ class BorrowedBooksController extends Controller
         $borrowed_book->delete();
         return redirect('/borrowed_books');
     }
-
-
-
 }

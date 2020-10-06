@@ -11,7 +11,7 @@
 </head>
 <body>
     <div class="container">
-        <form action="/staff/update/{{$result->id}}" method="POST">
+        <form action="/staff/{{$result->id}}" method="POST">
             @csrf
             @method('PUT')
 

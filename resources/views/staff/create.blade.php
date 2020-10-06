@@ -12,7 +12,7 @@
 <body>
 
     <div class="container">
-        <form action="/staff/store" method="POST">
+        <form action="/staff" method="POST">
             @csrf
             <div class="form-row">
                 <div class="form-group col-md-6">
