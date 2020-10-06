@@ -3,24 +3,24 @@
 namespace App\Http\Controllers;
 
 //model
-use App\DailyRecords;
+use App\DailyTimeRecords;
 use Cabon\Carbon;
 use Illuminate\Http\Request;
 
-class DailyRecordsController extends Controller
+class DailyTimeRecordsController extends Controller
 {
     
 
   public function index(){
 
   	//fetch all records
-    	$dailyrecord = DailyRecords::all();
+    	$dailytimerecord = DailytimeRecords::all();
     	//return
-    	return view('dailyrecords.index' , compact('dailyrecords'));
+    	return view('dailytimerecords.index' , compact('dailytimerecords'));
     }
 
    public function create(){
-    	return view('dailyrecords.create');
+    	return view('dailytimerecords.create');
     }
 
     public function store(Request $request){
@@ -36,7 +36,7 @@ class DailyRecordsController extends Controller
     	]);
 
     	$current = Carbon::now();
-    	$dailyrecord = DailyRecords::create([
+    	$dailytimerecord = DailyTimeRecords::create([
     	
 
     		// column => value
@@ -47,18 +47,18 @@ class DailyRecordsController extends Controller
     		'date' => $current,
     	]);	
 
-    	return redirect('/dailyrecords');
+    	return redirect('/dailytimerecords');
     }
 
     public function show($id){
     	// $dailyrecord  = Dailyrecords::find($dailyrecord_id);
-    	$dailyrecord = DailyRecords::find($id);
-    	return view('dailyrecords.show', compact('dailyrecord'));
+    	$dailytimerecord = DailyTimeRecords::find($id);
+    	return view('dailytimerecords.show', compact('dailytimerecord'));
     }
 
     public function edit($id){
-    	$dailyrecord = DailyRecords::find($id);
-    	return view('dailyrecords.edit', compact('dailyrecord'));
+    	$dailytimerecord = DailyRecords::find($id);
+    	return view('dailytimerecords.edit', compact('dailytimerecord'));
     }
 
     public function update(Request $request, $id){
@@ -72,8 +72,8 @@ class DailyRecordsController extends Controller
     		'date'=> 'required',
     	]);
 
-    	$dailyrecord = DailyRecords::find($id);
-    	$dailyrecord->update([
+    	$dailytimerecord = DailyTimeRecords::find($id);
+    	$dailytimerecord->update([
     		'ID' => $request->id,
     		'staff_id' => $request->staff_id,
     		'time_in' => $request->time_in,
@@ -83,12 +83,12 @@ class DailyRecordsController extends Controller
 
     	]);
 
-    	return redirect('/dailyrecords');
+    	return redirect('/dailytimerecords');
     }
 
    	public function destroy($id)
     {
         dailyrecords::destroy($id);
-        return redirect('/dailyrecords');
+        return redirect('/dailytimerecords');
          }
      }

@@ -100,7 +100,7 @@ Route::delete('/borrowers/{borrower}/delete', 'BorrowersController@delete');
 
 
 
-Route::resource('dailyrecords', 'DailyrecordsController');
+Route::resource('dailytimerecord', 'DailyTimeRecordsController');
 
 //----------------------------------------------------
 // Display all dailyrecord
