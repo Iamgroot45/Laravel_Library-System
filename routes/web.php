@@ -55,23 +55,23 @@ Route::put('/borrowed_books/{borrowed_book}', 'BorrowedBooksController@update');
 Route::delete('/borrowed_books/{borrowed_book}/delete', 'BorrowedBooksController@delete');
 
 //for books
-Route::get('/books', 'BooksController@index');
-Route::get('/books/create', 'BooksController@create');
-Route::get('/books/{book}', 'BooksController@show');
-Route::post('/books', 'BooksController@store');
-Route::get('/books/{book}/edit', 'BooksController@edit');
-Route::put('/books/{book}', 'BooksController@update');
-Route::delete('/books/{book}/delete', 'BooksController@delete');
+//Route::get('/books', 'BooksController@index');
+//Route::get('/books/create', 'BooksController@create');
+//Route::get('/books/{book}', 'BooksController@show');
+//Route::post('/books', 'BooksController@store');
+//Route::get('/books/{book}/edit', 'BooksController@edit');
+//Route::put('/books/{book}', 'BooksController@update');
+//Route::delete('/books/{book}/delete', 'BooksController@delete');*/
 
 
 //for users
-Route::get('/users', 'UsersController@index');
-Route::get('/users/create', 'UsersController@create')->name('register');
-Route::get('/users/{user}', 'UsersController@show');
-Route::post('/users', 'UsersController@store');
-Route::get('/users/{user}/edit', 'UsersController@edit');
-Route::put('/users/{user}', 'UsersController@update');
-Route::delete('/users/{user}/delete', 'UsersController@destroy');
+//Route::get('/users', 'UsersController@index');
+//Route::get('/users/create', 'UsersController@create')->name('register');
+//Route::get('/users/{user}', 'UsersController@show');
+//Route::post('/users', 'UsersController@store');
+//Route::get('/users/{user}/edit', 'UsersController@edit');
+//Route::put('/users/{user}', 'UsersController@update');
+//Route::delete('/users/{user}/delete', 'UsersController@destroy');
 
 
 
@@ -96,35 +96,41 @@ Route::put('/borrowers/{borrower}', 'BorrowersController@update');
 
 // Delete a borrower
 Route::delete('/borrowers/{borrower}/delete', 'BorrowersController@delete');
+
+
+
+
+Route::resource('dailyrecords', 'DailyrecordsController');
+
+//----------------------------------------------------
 // Display all dailyrecord
-Route::get('/dailyrecords', 'DailyrecordsController
-	@index');
+//Route::get('/dailyrecords', 'DailyrecordsController');
 
 // Display form to create dailyrecord
-Route::get('/dailyrecords/create', 'DailyrecordsController@create');
+//Route::get('/dailyrecords/create', 'DailyrecordsController@create');
 
 // Display specific dailyrecord
-Route::get('/dailyrecord/{dailyrecord}', 'DailyrecordsController@show');
+//Route::get('/dailyrecord/{dailyrecord}', 'DailyrecordsController@show');
 
 // Store a dailyrecord
-Route::post('/dailyrecords', 'DailyrecordsController@store');
+//Route::post('/dailyrecords', 'DailyrecordsController@store');
 
 // Display form to update dailyrecord
-Route::get('/dailyrecord/{dailyrecord}/edit', 'DailyrecordsController@edit');
+//Route::get('/dailyrecord/{dailyrecord}/edit', 'DailyrecordsController@edit');
 
 // Update a dailyrecord
-Route::put('/dailyrecord/{dailyrecord}', 'DailyrecordsController@update');
+//Route::put('/dailyrecord/{dailyrecord}', 'DailyrecordsController@update');
 
 // Delete a dailyrecord
-Route::delete('/dailyrecord/{dailyrecord}/delete', 'DailyrecordsController@delete');
+//Route::delete('/dailyrecord/{dailyrecord}/delete', 'DailyrecordsController@delete');
 
 // Update a dailyrecord
-Route::put('/dailyrecords/{dailyrecord}', 'dailyrecordsController@update');
+//Route::put('/dailyrecords/{dailyrecord}', 'dailyrecordsController@update');
 
 // Delete a dailyrecord
-Route::delete('/dailyrecords/{dailyrecord}/delete', 'dailyrecordsController@delete');
+//Route::delete('/dailyrecords/{dailyrecord}/delete', 'dailyrecordsController@delete');
 
-Route::get('/login', 'AuthController@index')->name('login');
+Route::get('/login', 'AuthController@index')->name('login'); 
 // Display all reservations
 Route::get('/reservations', 'ReservationsController@index');
 
