@@ -19,9 +19,9 @@ class TestController extends Controller
     //
 
     public function index(){
-        $staff = Staff::find(1);
+        $user = User::find(Staff::find(3)->id);
 
-        dd($staff->user);
+        dd(Staff::find(3)->id);
 
     }
 }

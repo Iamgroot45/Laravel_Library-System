@@ -18,6 +18,6 @@ class User extends Authenticatable
     }
 
     public function staff(){
-        return $this->hasOne('App\Borrower', 'user_id');
+        return $this->hasOne('App\Staff', 'user_id');
     }
 }
