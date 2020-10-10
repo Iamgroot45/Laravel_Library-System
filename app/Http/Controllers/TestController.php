@@ -19,8 +19,16 @@ class TestController extends Controller
     //
 
     public function index(){
-        $staff = Staff::find(1);
 
-        echo $staff->borrowed;
+        $author = Author::where([
+            'last_name' => 'Liebmann',
+            'first_name' => 'Emmy',
+            'middle_initial' => 'O'
+        ])->get();
+
+        dd($author[0] -> id);
+      //  $author = Author::find(78);
+
+        //echo $author->books;
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Author;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
@@ -32,11 +33,35 @@ class BooksController extends Controller
             'summary' => 'required',
             'publication_year' => 'required',
             'book_location' => 'required',
-            'no_of_copies' => 'required|numeric'
+            'no_of_copies' => 'required|numeric',
+            'available_copies' => 'required|numeric'
 
         ]);
-        $book = new Book();
-        $book -> create([
+
+        $authorId = "";
+
+        $author = Author::where([
+            'last_name' => $request->last_name,
+            'first_name' => $request->first_name,
+            'middle_initial' => $request->middle_initial
+        ])->get();
+
+
+        if($author->count() != 1){
+            $author = Author::create([
+                'last_name' => $request->last_name,
+                'first_name' => $request->first_name,
+                'middle_initial' => $request->middle_initial
+            ]);
+
+            $authorId = $author->id;
+        }else{
+
+            $authorId = $author[0]->id;
+
+        }
+
+        $book = Book::create([
 
             'isbn' => $request ->isbn,
             'title' => $request ->title,
@@ -45,9 +70,11 @@ class BooksController extends Controller
             'summary' => $request ->summary,
             'publication_year' => $request ->publication_year,
             'book_location' => $request ->book_location,
-            'no_of_copies' => $request ->no_of_copies
-
+            'no_of_copies' => $request ->no_of_copies,
+            'available_copies' => $request ->available_copies
         ]);
+
+        $book->authors()->attach($authorId);
 
         return redirect ('/books');
     }

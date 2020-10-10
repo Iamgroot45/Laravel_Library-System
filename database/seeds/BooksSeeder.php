@@ -3,15 +3,16 @@
 use Illuminate\Database\Seeder;
 use App\Book;
 
-class DatabaseSeeder extends Seeder
+class BooksSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-         $this->call(BooksSeeder::class);
+        //
+        $book = factory(Book::class, 100) -> create();
     }
 }
