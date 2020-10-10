@@ -13,14 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'TestController@index');
+//TESTING ROUTES
+Route::get('/test', 'TestController@index');
 
-//Route::resource('test', 'TestController');
-
-Route::resource('staff', 'StaffController');
-
-
-
+// ------------------LOGIN------------------------------
 Route::get('/login', function(){
     return view('login');
 })->name('login');
@@ -28,94 +24,49 @@ Route::get('/login', function(){
 Route::post('/login/authenticate', 'AuthController@login');
 
 Route::get('/logout', 'AuthController@logout')->name('logout');
-
-//For Borrowed Books
-
-Route::resource('borrowed', 'BorrowedBooksController');
-
-/* Route::get('/borrowed_books/create', 'BorrowedBooksController@create');
-
-Route::get('/borrowed_books/{borrowed_book}', 'BorrowedBooksController@show');
-
-Route::post('/borrowed_books', 'BorrowedBooksController@store');
-
-Route::get('/borrowed_books/{borrowed_book}/edit', 'BorrowedBooksController@edit');
-
-Route::put('/borrowed_books/{borrowed_book}', 'BorrowedBooksController@update');
-
-Route::delete('/borrowed_books/{borrowed_book}/delete', 'BorrowedBooksController@delete');
-*/
-
-/*for books
-Route::get('/books', 'BooksController@index');
-Route::get('/books/create', 'BooksController@create');
-Route::get('/books/{book}', 'BooksController@show');
-Route::post('/books', 'BooksController@store');
-Route::get('/books/{book}/edit', 'BooksController@edit');
-Route::put('/books/{book}', 'BooksController@update');
-Route::delete('/books/{book}/delete', 'BooksController@destroy');
-*/
-Route::resource('books', 'BooksController');
-Route::resource('users', 'UsersController');
-/*for users
-Route::get('/users', 'UsersController@index');
-Route::get('/users/create', 'UsersController@create')->name('register');
-Route::get('/users/{user}', 'UsersController@show');
-Route::post('/users', 'UsersController@store');
-Route::get('/users/{user}/edit', 'UsersController@edit');
-Route::put('/users/{user}', 'UsersController@update');
-Route::delete('/users/{user}/delete', 'UsersController@destroy');
-*/
-
-// ---------------------BORROWERS-------------------------
-
-Route::resource('borrowers', 'BorrowersController');
-
 // -------------------------------------------------------
 
-Route::resource('dailytimerecord', 'DailyTimeRecordsController');
+//Route::middleware('auth')->group(function () {
+    // ------------------AUTHORS------------------------------
+    Route::resource('authors', 'AuthorsController');
+    // -------------------------------------------------------
 
-//----------------------------------------------------
-// Display all dailyrecord
-//Route::get('/dailyrecords', 'DailyrecordsController');
+    // ------------------BOOKS--------------------------------
+    Route::resource('books', 'BooksController');
+    // -------------------------------------------------------
 
-// Display form to create dailyrecord
-//Route::get('/dailyrecords/create', 'DailyrecordsController@create');
+    // ------------------BOOK_AUTHORS-------------------------
+    Route::resource('book_authors', 'BooksAuthorController');
+    // -------------------------------------------------------
 
-// Display specific dailyrecord
-//Route::get('/dailyrecord/{dailyrecord}', 'DailyrecordsController@show');
+    // -----------------BOOK_RESERVATIONS---------------------
+    Route::resource('reservations', 'ReservationsController');
+    // -------------------------------------------------------
 
-// Store a dailyrecord
-//Route::post('/dailyrecords', 'DailyrecordsController@store');
+    // -----------------BORROWED_BOOKS------------------------
+    Route::resource('borrowed', 'BorrowedBooksController');
+    // -------------------------------------------------------
 
-// Display form to update dailyrecord
-//Route::get('/dailyrecord/{dailyrecord}/edit', 'DailyrecordsController@edit');
+    // -----------------BORROWERS-----------------------------
+    Route::resource('borrowers', 'BorrowersController');
+    // -------------------------------------------------------
 
-// Update a dailyrecord
-//Route::put('/dailyrecord/{dailyrecord}', 'DailyrecordsController@update');
+    // -----------------DAILY_TIME_RECORDS--------------------
+    Route::resource('dailytimerecord', 'DailyTimeRecordsController');
+    // -------------------------------------------------------
 
-// Delete a dailyrecord
-//Route::delete('/dailyrecord/{dailyrecord}/delete', 'DailyrecordsController@delete');
+    // -----------------STAFF---------------------------------
+    Route::resource('staff', 'StaffController');
+    // -------------------------------------------------------
 
-// Update a dailyrecord
-//Route::put('/dailyrecords/{dailyrecord}', 'dailyrecordsController@update');
-
-// Delete a dailyrecord
-//Route::delete('/dailyrecords/{dailyrecord}/delete', 'dailyrecordsController@delete');
-
-Route::get('/login', 'AuthController@index')->name('login');
-
-// --------------------- R E S E R V A T I O N S ----------------------------
-Route::resource('reservations', 'ReservationsController');
-
-Route::get('/login', 'AuthController@index')->name('login');
+    // -----------------USERS---------------------------------
+    Route::resource('users', 'UsersController');
+    // -------------------------------------------------------
+//});
 
 
 
-// Authors
-Route::resource('authors', 'AuthorsController');
 
-// Book_authors
-Route::resource('book_authors', 'BooksAuthorController');
+
 
 

@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Staff;
+use finfo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class StaffController extends Controller
 {
@@ -27,15 +30,25 @@ class StaffController extends Controller
             'first_name' => 'required',
             'middle_initial' => ['required', 'max:1'],
             'position' => 'required',
-            'area_assigned' => 'required'
+            'area_assigned' => 'required',
+            'email' => 'required',
+            'password' => 'required'
         ]);
 
-        $staff = Staff::create([
-            'last_name' => $request->last_name,
-            'first_name' => $request->first_name,
-            'middle_initial' => $request->middle_initial,
-            'position' => $request->position,
-            'area_assigned' => $request->area_assigned
+        $user = User::create([
+            'username' => $request->input('email'),
+            'password' => Hash::make($request->input('password')),
+            'distinction' => 'ADMIN'
+        ]);
+
+        Staff::create([
+            'user_id' => $user->id,
+            'last_name' => $request->input('last_name'),
+            'first_name' => $request->input('first_name'),
+            'middle_initial' => $request->input('middle_initial'),
+            'email' => $request->input('email'),
+            'position' => $request->input('position'),
+            'area_assigned' => $request->input('area_assigned')
         ]);
 
         return redirect('/staff');
@@ -62,7 +75,9 @@ class StaffController extends Controller
             'first_name' => 'required',
             'middle_initial' => ['required', 'max:1'],
             'position' => 'required',
-            'area_assigned' => 'required'
+            'area_assigned' => 'required',
+            'email' => 'required',
+            'password' => 'required'
         ]);
 
         $staff = Staff::find($id);
@@ -79,7 +94,11 @@ class StaffController extends Controller
 
     public function destroy($id)
     {
-        Staff::destroy($id);
+        $staff = Staff::find($id);
+        $uid = $staff->user_id;
+
+        $staff->destroy($id);
+        User::destroy($uid);
 
         return redirect('/staff');
     }

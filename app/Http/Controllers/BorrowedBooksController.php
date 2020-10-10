@@ -24,7 +24,7 @@ class BorrowedBooksController extends Controller
 
     public function store(Request $request){
 
-        request()->validate([
+        $request->validate([
             'book' => 'required',
             'borrower' => 'required',
             'staff' => 'required',
@@ -32,7 +32,7 @@ class BorrowedBooksController extends Controller
         ]);
 
         $current = Carbon::now();
-        $borrowed_book = BorrowedBook:: create([
+        BorrowedBook:: create([
             'book_id' => $request->book,
             'borrower_id' => $request->borrower,
             'staff_id' => $request->staff,
@@ -48,14 +48,15 @@ class BorrowedBooksController extends Controller
         return view('borrowed_books.edit', compact('borrowed_book'));
     }
 
-    public function update(Request $request){
+    public function update(Request $request, $id){
 
-        request()->validate([
+        $request->validate([
             'stats' => 'required',
         ]);
 
         $current = Carbon::now();
-        $borrowed_book = BorrowedBook:: create([
+        $borrowed_book = BorrowedBook::find($id);
+        $borrowed_book->update([
             'date_borrowed' => $current,
             'due_date' => $current,
             'status' => $request->stats

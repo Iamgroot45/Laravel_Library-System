@@ -35,9 +35,8 @@ class BooksController extends Controller
             'no_of_copies' => 'required|numeric'
 
         ]);
-        $book = new Book();
-        $book -> create([
 
+        Book::create([
             'isbn' => $request ->isbn,
             'title' => $request ->title,
             'publisher' => $request ->publisher,

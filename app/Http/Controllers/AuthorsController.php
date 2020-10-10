@@ -15,7 +15,6 @@ class AuthorsController extends Controller
      */
     public function index()
     {
-        //
         $authors = Author::all();
         return view('authors.index', compact('authors'));
     }
@@ -27,7 +26,6 @@ class AuthorsController extends Controller
      */
     public function create()
     {
-        //
         return view('authors.create');
     }
 
@@ -39,18 +37,18 @@ class AuthorsController extends Controller
      */
     public function store(Request $request)
     {
-        //
         request()->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'middle_initial' => 'required',    
+            'middle_initial' => 'required',
         ]);
 
-        $author = Author::create([
-            'first_name' => request()->first_name,
-            'last_name' => request()->last_name,
-            'middle_initial' => request()->middle_initial,
+        Author::create([
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'middle_initial' => $request->middle_initial,
         ]);
+
         return redirect('/authors');
     }
 
@@ -62,7 +60,6 @@ class AuthorsController extends Controller
      */
     public function show($id)
     {
-        //
         $author = Author::find($id);
 
         return view('authors.show', compact('author'));
@@ -76,7 +73,6 @@ class AuthorsController extends Controller
      */
     public function edit($id)
     {
-        //
         $author = Author::find($id);
 
         return view('authors.show', compact('author'));
@@ -91,18 +87,17 @@ class AuthorsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        request()->validate([
-            'first_name' => 'required',
+        $request->validate([
             'last_name' => 'required',
-            'middle_initial' => 'required',    
+            'first_name' => 'required',
+            'middle_initial' => 'required',
         ]);
 
         $author = Author::find($id);
-        $author ->update ([
-            'first_name' => $request->input(first_name),
-            'last_name' => $request->input(last_name),
-            'middle_initial' => $request->input(middle_initial),
+        $author->update([
+            'last_name' => $request->input('last_name'),
+            'first_name' => $request->input('first_name'),
+            'middle_initial' => $request->input('middle_initial'),
         ]);
         return redirect('/authors');
     }
@@ -115,7 +110,6 @@ class AuthorsController extends Controller
      */
     public function destroy($id)
     {
-        //
         Author::destroy($id);
 
         return redirect('/authors');

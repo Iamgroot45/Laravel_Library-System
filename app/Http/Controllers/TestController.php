@@ -21,6 +21,7 @@ class TestController extends Controller
     public function index(){
         $staff = Staff::find(1);
 
-        echo $staff->borrowed;
+        dd($staff->user);
+
     }
 }

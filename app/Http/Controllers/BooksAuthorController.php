@@ -15,7 +15,6 @@ class BooksAuthorController extends Controller
      */
     public function index()
     {
-        //
         $book_authors = BookAuthor::all();
         return view('book_authors.index', compact('book_authors'));
     }
@@ -27,7 +26,6 @@ class BooksAuthorController extends Controller
      */
     public function create()
     {
-        //
         return view('book_authors.create');
     }
 
@@ -39,16 +37,16 @@ class BooksAuthorController extends Controller
      */
     public function store(Request $request)
     {
-        //
-         request()->validate([
+        $request->validate([
             'author_id' => 'required',
-            'book_id' => 'required',   
+            'book_id' => 'required',
         ]);
 
-        $book_author = BookAuthor::create([
+        BookAuthor::create([
             'author_id' => request()->author_id,
             'book_id' => request()->book_id,
         ]);
+
         return redirect('/book_authors');
     }
 
@@ -60,7 +58,6 @@ class BooksAuthorController extends Controller
      */
     public function show($id)
     {
-        //
         $book_author = BookAuthor::find($id);
 
         return view('book_authors.show', compact('book_author'));
@@ -74,7 +71,6 @@ class BooksAuthorController extends Controller
      */
     public function edit($id)
     {
-        //
         $book_author = BookAuthor::find($id);
 
         return view('book_authors.show', compact('book_author'));
@@ -89,16 +85,15 @@ class BooksAuthorController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        request()->validate([
+        $request->validate([
             'author_id' => 'required',
-            'book_id' => 'required',   
+            'book_id' => 'required',
         ]);
 
         $book_author = BookAuthor::find($id);
         $book_author->update([
-            'author_id' => $request->input(author_id),
-            'book_id' => $request->input(book_id),
+            'author_id' => $request->input('author_id'),
+            'book_id' => $request->input('book_id'),
         ]);
         return redirect('/book_authors');
     }
@@ -111,8 +106,7 @@ class BooksAuthorController extends Controller
      */
     public function destroy($id)
     {
-        //
-        Book_author::destroy($id);
+        BookAuthor::destroy($id);
 
         return redirect('/book_authors');
     }

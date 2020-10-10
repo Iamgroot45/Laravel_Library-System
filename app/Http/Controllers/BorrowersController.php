@@ -15,16 +15,16 @@ class BorrowersController extends Controller
         return view('borrowers.index', compact('borrowers'));
     }
 
-    
+
     public function create()
     {
         return view('borrowers.create');
     }
 
-    
+
     public function store(Request $request)
     {
-        request()->validate([
+        $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
             'middle_initial' => ['required','max:1'],
@@ -33,38 +33,36 @@ class BorrowersController extends Controller
             'purpose' => 'required'
         ]);
 
-        $borrower = new Borrower;
-        $borrower->create([
-            // column => value
-            'first_name' => request()->first_name,
-            'last_name' => request()->last_name,
-            'middle_initial' => request()->middle_initial,
-            'contact_number' => request()->contact_number,
-            'email_address' =>  request()->email_address,
-            'purpose' => request()->purpose,
-        
+        Borrower::create([
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->last_name,
+            'middle_initial' => $request->middle_initial,
+            'contact_number' => $request->contact_number,
+            'email_address' =>  $request->email_address,
+            'purpose' => $request->purpose,
+
         ]);
         return redirect('/borrowers');
     }
 
-    
+
     public function show($id)
     {
-        $borrower  = Borrower::find($borrower_id);
+        $borrower  = Borrower::find($id);
         return view('borrowers.show', compact('borrower'));
     }
 
-    
+
     public function edit($id)
     {
-        $borrower  = Borrower::find($borrower_id);
+        $borrower  = Borrower::find($id);
         return view('borrowers.edit', compact('borrower'));
     }
 
-    
+
     public function update(Request $request, $id)
     {
-        request()->validate([
+        $request->validate([
             'first_name' => 'required',
             'last_name' => 'required',
             'middle_initial' => ['required','max:1'],
@@ -73,20 +71,20 @@ class BorrowersController extends Controller
             'purpose' => 'required'
         ]);
 
-        // $borrower  = Borrower::find($borrower_id);
+        $borrower  = Borrower::find($id);
         $borrower->update([
-            'first_name' => request()->first_name,
-            'last_name' => request()->last_name,
-            'middle_initial' => request()->middle_initial,
-            'contact_number' => request()->contact_number,
-            'email_address' =>  request()->email_address,
-            'purpose' => request()->purpose
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
+            'middle_initial' => $request->middle_initial,
+            'contact_number' => $request->contact_number,
+            'email_address' =>  $request->email_address,
+            'purpose' => $request->purpose
         ]);
 
         return redirect('/borrowers');
     }
 
-    
+
     public function destroy($id)
     {
         Borrower::destroy($id);
