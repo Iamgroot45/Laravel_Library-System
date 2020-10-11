@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class BorrowedBooksController extends Controller
 {
+
     public function index(){
         $borrowed_books = BorrowedBook::all();
         return view('borrowed_books.index',compact('borrowed_books'));
@@ -15,7 +16,7 @@ class BorrowedBooksController extends Controller
 
     public function show($id){
         $borrowed_book = BorrowedBook::find($id);
-        return view('borrowed_books.show',compact('borrowed_book'));      
+        return view('borrowed_books.show',compact('borrowed_book'));
     }
 
     public function create(){
@@ -28,7 +29,7 @@ class BorrowedBooksController extends Controller
             'book' => 'required',
             'borrower' => 'required',
             'staff' => 'required',
-            'stats' => 'required',    
+            'stats' => 'required',
         ]);
 
         $current = Carbon::now();
@@ -51,7 +52,7 @@ class BorrowedBooksController extends Controller
     public function update(Request $request){
 
         request()->validate([
-            'stats' => 'required',    
+            'stats' => 'required',
         ]);
 
         $current = Carbon::now();

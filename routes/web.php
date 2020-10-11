@@ -54,7 +54,7 @@ Route::get('/borrowed_books/{borrowed_book}/edit', 'BorrowedBooksController@edit
 
 Route::put('/borrowed_books/{borrowed_book}', 'BorrowedBooksController@update');
 
-Route::delete('/borrowed_books/{borrowed_book}/delete', 'BorrowedBooksController@delete'); 
+Route::delete('/borrowed_books/{borrowed_book}/delete', 'BorrowedBooksController@delete');
 */
 
 //for books
