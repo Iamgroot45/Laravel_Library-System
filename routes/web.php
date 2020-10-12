@@ -149,6 +149,7 @@ Route::get('/login', 'AuthController@index')->name('login');
 
 
 
+
 // Authors
 Route::resource('authors', 'AuthorsController');
 

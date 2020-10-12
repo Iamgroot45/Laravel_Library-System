@@ -12,7 +12,7 @@ class AuthorSeeder extends Seeder
      */
     public function run()
     {
-
+    	
         $authors =[
         	['last_name'=>'Ben','first_name'=>'Ten', 'middle_initial'=>'N'],
         	['last_name'=>'Ben 1','first_name'=>'Ten 1', 'middle_initial'=>'N'],
