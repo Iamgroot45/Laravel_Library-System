@@ -25,7 +25,7 @@ class BooksController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        $rawData = $request->validate([
             'isbn' => 'required',
             'title' => 'required',
             'publisher' => 'required',
@@ -34,10 +34,16 @@ class BooksController extends Controller
             'publication_year' => 'required',
             'book_location' => 'required',
             'no_of_copies' => 'required|numeric',
-            'available_copies' => 'required|numeric'
+            'available_copies' => 'required|numeric',
+            'rating_1' => 'required',
+            'rating_2' => 'required',
+            'rating_3' => 'required',
+            'rating_4' => 'required',
+            'rating_5' => 'required',
+            'average_rating' => 'required'
 
         ]);
-
+    /*
         $authorId = "";
 
         $author = Author::where([
@@ -75,6 +81,8 @@ class BooksController extends Controller
         ]);
 
         $book->authors()->attach($authorId);
+    */
+        Book::create($rawData);
 
         return redirect ('/books');
     }
@@ -97,7 +105,7 @@ class BooksController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
+        $updateValues = $request->validate([
             'isbn' => 'required',
             'title' => 'required',
             'publisher' => 'required',
@@ -105,12 +113,19 @@ class BooksController extends Controller
             'summary' => 'required',
             'publication_year' => 'required',
             'book_location' => 'required',
-            'no_of_copies' => 'required|numeric'
+            'no_of_copies' => 'required|numeric',
+            'available_copies' => 'required|numeric',
+            'rating_1' => 'required',
+            'rating_2' => 'required',
+            'rating_3' => 'required',
+            'rating_4' => 'required',
+            'rating_5' => 'required',
+            'average_rating' => 'required'
 
         ]);
 
-        $book = Book::find($id);
-        $book -> update([
+        Book::find($id) ->update($updateValues);
+       /* $book -> update([
             'isbn' => $request ->isbn,
             'title' => $request ->title,
             'publisher' => $request ->publisher,
@@ -120,7 +135,7 @@ class BooksController extends Controller
             'book_location' => $request ->book_location,
             'no_of_copies' => $request ->no_of_copies
         ]);
-
+        */
         return redirect('/books');
     }
 
