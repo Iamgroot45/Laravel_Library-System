@@ -40,7 +40,6 @@ class BorrowersController extends Controller
      */
     public function store(Borrower $borrower)
     {
-        $users = User::all();
         request()->validate([
             'user_id' => 'required',
             'first_name' => 'required',

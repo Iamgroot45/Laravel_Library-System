@@ -8,6 +8,7 @@ class Borrower extends Model
 {
     //eloquent model
     protected $guarded = [];
+    
     public $timestamps = false;
 
     //user
