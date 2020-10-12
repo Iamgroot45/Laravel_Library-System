@@ -21,7 +21,7 @@
                 @foreach ($users as $user)
                     <tr>
                         <td>{{$user -> id}}</td>
-                        <td>{{$user -> username}}</td>
+                        <td><a href="/users/{{ $user->id }}"></a>{{$user -> username}}</td>
                         <td>{{$user -> password}}</td>
                         <td>{{$user -> distinction}}</td>
 
@@ -43,6 +43,7 @@
                     </tr>
                  @endforeach
             </tbody>
+            <a href="/users/create">Create</a>
         </table>
     </div>
 

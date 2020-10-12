@@ -4,6 +4,11 @@
 	<title></title>
 </head>
 <body>
+	<h1>Edit Borrower {{ $borrower->first_name }}
+	{{ $borrower->middle_initial }}
+{{ $borrower->last_name }}</h1>
+
+	<h3>Username {{ $borrower->user->username }}</h3>
 	<form action="/borrowers/{{ $borrower->id }}" method="POST">
 		@if ($errors->any())
         <div class="alert alert-danger">

@@ -12,7 +12,7 @@ class Borrower extends Model
 
     //user
     public function user(){
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     //book borrowed
