@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 //TESTING ROUTES
-Route::get('/test', 'TestController@index');
+Route::get('/', 'TestController@index');
 
 // ------------------LOGIN------------------------------
 Route::get('/login', function(){

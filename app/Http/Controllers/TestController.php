@@ -12,6 +12,7 @@ use App\Borrower;
 use App\DailyTimeRecord;
 use App\Staff;
 use App\User;
+use StaffSeeder;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -19,9 +20,14 @@ class TestController extends Controller
     //
 
     public function index(){
-        $user = User::find(Staff::find(3)->id);
+        $staff = factory(Staff::class)->create();
 
-        dd(Staff::find(3)->id);
+        /* $staff_update_values = factory(Staff::class)->raw([
+            'user_id' => $staff->id
+        ]); */
 
+        //echo $staff->id;
+        $staff_compact = compact("staff");
+        dd($staff_compact["staff"]->id);
     }
 }

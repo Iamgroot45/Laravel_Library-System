@@ -25,17 +25,17 @@ class StaffController extends Controller
 
     public function store(Request $request)
     {
-        $request->validate([
+        /* $form_fileds = $request->validate([
             'last_name' => 'required',
             'first_name' => 'required',
             'middle_initial' => ['required', 'max:1'],
+            'email' => 'required',
             'position' => 'required',
             'area_assigned' => 'required',
-            'email' => 'required',
             'password' => 'required'
-        ]);
+        ]); */
 
-        $user = User::create([
+        /* $user = User::create([
             'username' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
             'distinction' => 'ADMIN'
@@ -49,17 +49,20 @@ class StaffController extends Controller
             'email' => $request->input('email'),
             'position' => $request->input('position'),
             'area_assigned' => $request->input('area_assigned')
+        ]); */
+
+        //========= FOR TESTING ==========//
+        $form_fileds = $request->validate([
+            'user_id' => 'required',
+            'last_name' => 'required',
+            'first_name' => 'required',
+            'middle_initial' => ['required', 'max:1'],
+            'email' => 'required',
+            'position' => 'required',
+            'area_assigned' => 'required',
         ]);
 
-        /* Staff::create([
-            'user_id' => $user->id,
-            'last_name' => $request->input('last_name'),
-            'first_name' => $request->input('first_name'),
-            'middle_initial' => $request->input('middle_initial'),
-            'email' => $request->input('email'),
-            'position' => $request->input('position'),
-            'area_assigned' => $request->input('area_assigned')
-        ]); */
+        Staff::create($form_fileds);
 
         return redirect('/staff');
     }
@@ -80,7 +83,7 @@ class StaffController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request->validate([
+        /* $request->validate([
             'last_name' => 'required',
             'first_name' => 'required',
             'middle_initial' => ['required', 'max:1'],
@@ -88,9 +91,9 @@ class StaffController extends Controller
             'area_assigned' => 'required',
             'email' => 'required',
             'password' => 'required'
-        ]);
+        ]); */
 
-        $user = User::find(Staff::find($id)->id);
+        /* $user = User::find(Staff::find($id)->id);
         $user->update([
             'username' => $request->input('email'),
             'password'=> $request->input('password')
@@ -100,28 +103,38 @@ class StaffController extends Controller
             'last_name' => $request->input('last_name'),
             'first_name' => $request->input('first_name'),
             'middle_initial' => $request->input('middle_initial'),
-            'position' => $request->input('position'),
-            'area_assigned' => $request->input('area_assigned')
-        ]);
-
-        /* $staff -> update([
-            'last_name' => $request->input('last_name'),
-            'first_name' => $request->input('first_name'),
-            'middle_initial' => $request->input('middle_initial'),
+            'email' => $request->input('email'),
             'position' => $request->input('position'),
             'area_assigned' => $request->input('area_assigned')
         ]); */
+
+        //========= FOR TESTING ==========//
+        $form_fileds = $request->validate([
+            'user_id' => 'required',
+            'last_name' => 'required',
+            'first_name' => 'required',
+            'middle_initial' => ['required', 'max:1'],
+            'email' => 'required',
+            'position' => 'required',
+            'area_assigned' => 'required',
+        ]);
+
+        Staff::find($id)->update($form_fileds);
 
         return redirect('/staff');
     }
 
     public function destroy($id)
     {
-        $staff = Staff::find($id);
+        /* $staff = Staff::find($id);
         $uid = $staff->user_id;
 
         $staff->destroy($id);
-        User::destroy($uid);
+        User::destroy($uid); */
+
+        //========= FOR TESTING ==========//
+        $staff = Staff::find($id);
+        $staff->destroy($id);
 
         return redirect('/staff');
     }
