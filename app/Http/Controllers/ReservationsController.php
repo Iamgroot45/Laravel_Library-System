@@ -98,11 +98,10 @@ class ReservationsController extends Controller
 
         $reservation = BookReservation::find($id);
         $reservation->update([
-            'book_id' => $request->book_id,
-            'reservation_date' => $request->reservation_date,
-            'pickup_date' =>  $request->pickup_date
+            'book_id'=>request()->book_id,
+            'reservation_date'=>request()->reservation_date,
+            'pickup_date'=>request()->pickup_date
         ]);
-
         return redirect('/reservations');
     }
 
