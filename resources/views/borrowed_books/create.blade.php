@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('contents')
-    
+
 
     <form action="/borrowed" method="POST">
 
@@ -17,13 +17,13 @@
 
         @csrf
         <label for="">Book ID: </label>
-        <input type="text" name="book">
+        <input type="text" name="book_id">
         <label for="">Borrower ID:</label>
-        <input type="text" name="borrower">
+        <input type="text" name="borrower_id">
         <label for="">Staff ID:</label>
-        <input type="text" name="staff">
+        <input type="text" name="staff_id">
         <label for="">Status:</label>
-        <input type="text" name="stats">
+        <input type="text" name="status">
 
         <input type="submit">
     </form>

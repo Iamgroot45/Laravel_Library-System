@@ -7,9 +7,9 @@ use Faker\Generator as Faker;
 
 $factory->define(BorrowedBook::class, function (Faker $faker) {
     return [
-        'book_id' => $faker->numberBetween($min = 1, $max = 1000),
-        'staff_id' => $faker->numberBetween($min = 1, $max = 5),
-        'borrower_id' => $faker->numberBetween($min = 1, $max = 20),
+        'book_id' => factory(App\Book::class)->create(),
+        'staff_id' => factory(App\Staff::class)->create(),
+        'borrower_id' => factory(App\Borrower::class)->create(),
         'status' => $faker->word,
         'date_borrowed' => $faker->date($format = 'Y-m-d', $max ='now'),
         'due_date' => $faker->date($format = 'Y-m-d', $max ='now'),

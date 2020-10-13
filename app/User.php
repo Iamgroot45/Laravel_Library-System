@@ -17,6 +17,6 @@ class User extends Authenticatable
     }
 
     public function staff(){
-        return $this->hasMany('App\Borrower', 'user_id');
+        return $this->hasMany('App\Staff', 'user_id');
     }
 }

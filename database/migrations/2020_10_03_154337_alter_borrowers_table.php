@@ -20,7 +20,7 @@ class AlterBorrowersTable extends Migration
             $table->string('first_name');
             $table->string('middle_initial');
             $table->string('contact_number')->unique();
-            $table->string('email_address')->unique();
+            $table->string('email')->unique();
         });
     }
 
