@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Borrower;
 use Illuminate\Http\Request;
 
 class BorrowersController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         // fetch all borrowers
@@ -15,79 +21,103 @@ class BorrowersController extends Controller
         return view('borrowers.index', compact('borrowers'));
     }
 
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
-        return view('borrowers.create');
+        $users = User::all();
+        return view('borrowers.create', compact('users'));
     }
 
-
-    public function store(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Borrower $borrower)
     {
-        $request->validate([
+        request()->validate([
+            'user_id' => 'required',
             'first_name' => 'required',
             'last_name' => 'required',
-            'middle_initial' => ['required','max:1'],
+            'middle_initial' => 'required',
             'contact_number' => 'required',
             'email_address' =>  'required',
             'purpose' => 'required'
         ]);
 
-        Borrower::create([
-            'first_name' => $request->input('first_name'),
-            'last_name' => $request->last_name,
-            'middle_initial' => $request->middle_initial,
-            'contact_number' => $request->contact_number,
-            'email_address' =>  $request->email_address,
-            'purpose' => $request->purpose,
-
+        $borrower = new Borrower;
+        $borrower->create([
+            // column => value
+            'user_id' => request()->user_id,
+            'first_name' => request()->first_name,
+            'last_name' => request()->last_name,
+            'middle_initial' => request()->middle_initial,
+            'contact_number' => request()->contact_number,
+            'email_address' =>  request()->email_address,
+            'purpose' => request()->purpose
         ]);
         return redirect('/borrowers');
     }
 
-
-    public function show($id)
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Borrower $borrower)
     {
-        $borrower  = Borrower::find($id);
         return view('borrowers.show', compact('borrower'));
     }
 
-
-    public function edit($id)
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(Borrower $borrower)
     {
-        $borrower  = Borrower::find($id);
-        return view('borrowers.edit', compact('borrower'));
+        return view('borrowers.edit', compact('borrower','users'));
     }
 
-
-    public function update(Request $request, $id)
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Borrower $borrower)
     {
-        $request->validate([
+        $users = User::all();
+        $validated_fields = request()->validate([
             'first_name' => 'required',
             'last_name' => 'required',
-            'middle_initial' => ['required','max:1'],
+            'middle_initial' => 'required',
             'contact_number' => 'required',
             'email_address' =>  'required',
             'purpose' => 'required'
         ]);
 
-        $borrower  = Borrower::find($id);
-        $borrower->update([
-            'first_name' => $request->first_name,
-            'last_name' => $request->last_name,
-            'middle_initial' => $request->middle_initial,
-            'contact_number' => $request->contact_number,
-            'email_address' =>  $request->email_address,
-            'purpose' => $request->purpose
-        ]);
-
+        $borrower->update($validated_fields);
         return redirect('/borrowers');
     }
 
-
-    public function destroy($id)
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Borrower $borrower)
     {
-        Borrower::destroy($id);
+        $borrower->delete();
         return redirect('/borrowers');
     }
 }

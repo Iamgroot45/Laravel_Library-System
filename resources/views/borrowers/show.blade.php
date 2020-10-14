@@ -5,6 +5,8 @@
 </head>
 <body>
 	<h3>ID: {{ $borrower->id }}</h3>
+	<h3>USER ID: {{ $borrower->user['user_id'] }}</h3>
+	<h3>USERNAME: {{ $borrower->user['username'] }}</h3>
 	<h3>NAME: {{ $borrower->first_name }} {{ $borrower->middle_initial }} {{ $borrower->last_name }}</h3>
 	<h3>CONTACT NUMBER: {{ $borrower->contact_number }}</h3>
 	<h3>EMAIL ADDRESS: {{ $borrower->email_address }}</h3>

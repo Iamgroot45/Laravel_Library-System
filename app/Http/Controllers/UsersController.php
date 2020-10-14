@@ -3,26 +3,38 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Borrower;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Redis;
 
 class UsersController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         $users = User::all();
         return view('users.index', compact('users'));
     }
 
-
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create()
     {
         return view ('users.create');
     }
 
-
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
 
@@ -54,7 +66,6 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         return view ('users.edit', compact('user'));
-
     }
 
 
