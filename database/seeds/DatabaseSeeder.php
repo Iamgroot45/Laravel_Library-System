@@ -22,5 +22,8 @@ class DatabaseSeeder extends Seeder
         	ReservationSeeder::class
         ]);
         $this->call(BorrowedBooksSeeder::class);
+        $this->call([AuthorSeeder::class]);
+
+        $this->call([BookAuthorSeeder::class]);
     }
 }

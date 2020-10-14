@@ -74,8 +74,7 @@ class AuthorsController extends Controller
     public function edit($id)
     {
         $author = Author::find($id);
-
-        return view('authors.show', compact('author'));
+        return view('authors.edit', compact('author'));
     }
 
     /**
@@ -94,10 +93,10 @@ class AuthorsController extends Controller
         ]);
 
         $author = Author::find($id);
-        $author->update([
-            'last_name' => $request->input('last_name'),
-            'first_name' => $request->input('first_name'),
-            'middle_initial' => $request->input('middle_initial'),
+        $author ->update ([
+            'first_name' => request() ->first_name,
+            'last_name' => request()->last_name,
+            'middle_initial' => request()->middle_initial,
         ]);
         return redirect('/authors');
     }
