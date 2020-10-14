@@ -18,5 +18,8 @@ class DatabaseSeeder extends Seeder
         // $this->call(UserSeeder::class);
         $this->call(BorrowerSeeder::class);
 
+        $this->call([
+        	ReservationSeeder::class
+        ]);
     }
 }
