@@ -12,18 +12,19 @@ class DailyTimeRecordsSeeder extends Seeder
     public function run()
     {
         $dailyrecords = [
-            ['ID'=>'1','date'=>'2020-09-23','time_in'=>'2020-09-24'],
-        	['book_id'=>'2','reservation_date'=>'2020-09-24','pickup_date'=>'2020-09-25'],
-        	['book_id'=>'3','reservation_date'=>'2020-09-25','pickup_date'=>'2020-09-26'],
-        	['book_id'=>'4','reservation_date'=>'2020-09-26','pickup_date'=>'2020-09-27'],
-        	['book_id'=>'5','reservation_date'=>'2020-09-27','pickup_date'=>'2020-09-28'],
-
-            [''=>'1','reservation_date'=>'2020-09-23','pickup_date'=>'2020-09-24'],
+            ['ID'=>'1','date'=>'2020-10-2','time_in'=>'2020-10-2 10:30:00','time_out'=>'2020-10-2 10:35:00']
+            ['ID'=>'2','date'=>'2020-10-3','time_in'=>'2020-10-3 10:35:00','time_out'=>'2020-10-3 10:40:00']
+            ['ID'=>'3','date'=>'2020-10-4','time_in'=>'2020-10-4 10:40:00','time_out'=>'2020-10-4 10:50:00']
+            ['ID'=>'4','date'=>'2020-10-5','time_in'=>'2020-10-5 10:50:00','time_out'=>'2020-10-5 11:00:00']
+            ['ID'=>'5','date'=>'2020-10-6','time_in'=>'2020-10-6 11:00:00','time_out'=>'2020-10-6 11:05:00]
+           
 
 
 
 
 
         ];
-        DB::table('daily_time_records')->insert($dailyrecords);    }
+
+        DB::table('daily_time_records')->insert($dailytimerecords); 
+    }
 }

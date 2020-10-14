@@ -59,6 +59,7 @@ class DailyTimeRecordsTest extends TestCase
 
         $this->assertDatabaseMissing('dailytimerecords', [
             'ID' => $dailytimerecords->id,
+            'staff_id' => $dailytimerecords->staff_id,
             'time_in' => $dailytimerecords->time_in,
             'time_out' => $dailytimerecords->time_out,
             'date' => $dailytimerecords->date
