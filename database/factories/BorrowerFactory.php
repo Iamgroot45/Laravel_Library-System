@@ -16,7 +16,6 @@ $factory->define(Borrower::class, function (Faker $faker) {
         'first_name' => $faker->firstName(),
         'middle_initial' => strtoupper($faker->randomLetter),
         'contact_number' => $faker->phoneNumber,
-        'email_address'=> $email,
-        'purpose' => $faker->sentence
+        'email'=> $email
     ];
 });

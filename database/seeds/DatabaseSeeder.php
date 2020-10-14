@@ -21,5 +21,6 @@ class DatabaseSeeder extends Seeder
         $this->call([
         	ReservationSeeder::class
         ]);
+        $this->call(BorrowedBooksSeeder::class);
     }
 }

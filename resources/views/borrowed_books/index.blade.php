@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('contents')
-    
+
     <h2>Borrowed Books</h2>
     <a href="/borrowed/create">
     <h3>Create</h3></a>
@@ -33,7 +33,6 @@
                     <td>
                         <a href="/borrowed/{{$borrowed_book->id}}">Show</a>
                     </td>
-                    
 
                     <td>
                         <a href="/borrowed/{{$borrowed_book->id}}/edit">Edit</a>
@@ -44,11 +43,12 @@
                             @method('delete')
                             <input type="submit" name="delete" value="delete">
                         </form>
-                        
-                        
+
+
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
     @endsection
+

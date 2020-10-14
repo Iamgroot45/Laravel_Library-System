@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class BorrowedBooksController extends Controller
 {
+
     public function index(){
         $borrowed_books = BorrowedBook::all();
         return view('borrowed_books.index',compact('borrowed_books'));
@@ -23,8 +24,8 @@ class BorrowedBooksController extends Controller
     }
 
     public function store(Request $request){
-
-        $request->validate([
+        /*
+        request()->validate([
             'book' => 'required',
             'borrower' => 'required',
             'staff' => 'required',
@@ -41,6 +42,20 @@ class BorrowedBooksController extends Controller
             'status' => $request->stats
         ]);
         return redirect('/borrowed');
+        */
+
+        //=====FOR TESTING========
+        $form_fields = request()->validate([
+            'book_id' => 'required',
+            'staff_id' => 'required',
+            'borrower_id' => 'required',
+            'status' => 'required',
+            'date_borrowed' => 'required',
+            'due_date' => 'required',
+            'date_returned' => 'required'
+        ]);
+        BorrowedBook::create($form_fields);
+        return redirect('/borrowed');
     }
 
     public function edit($id){
@@ -50,7 +65,8 @@ class BorrowedBooksController extends Controller
 
     public function update(Request $request, $id){
 
-        $request->validate([
+        /*
+        request()->validate([
             'stats' => 'required',
         ]);
 
@@ -62,10 +78,29 @@ class BorrowedBooksController extends Controller
             'status' => $request->stats
         ]);
         return redirect('/borrowed');
-    }
-
-    public function destroy($id){
-        BorrowedBook::destroy($id);
+        */
+        $form_fields = request()->validate([
+            'book_id' => 'required',
+            'staff_id' => 'required',
+            'borrower_id' => 'required',
+            'status' => 'required',
+            'date_borrowed' => 'required',
+            'due_date' => 'required',
+            'date_returned' => 'required'
+        ]);
+        BorrowedBook::create($form_fields);
         return redirect('/borrowed');
     }
+        public function destroy($id){
+        /*
+        BorrowedBook::destroy($id);
+        return redirect('/borrowed');
+        */
+        $borrowed_book = BorrowedBook::find($id);
+        $borrowed_book->destroy($id);
+        return redirect('/borrowed');
+
+    }
+
+
 }
