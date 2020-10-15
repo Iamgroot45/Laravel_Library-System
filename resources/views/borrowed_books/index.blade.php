@@ -1,9 +1,9 @@
 @extends('layouts.master')
 
 @section('contents')
-    
+
     <h2>Borrowed Books</h2>
-    <a href="/borrowed_books/create">
+    <a href="/borrowed/create">
     <h3>Create</h3></a>
     <table class="table table-striped">
         <thead class="thead-dark">
@@ -31,24 +31,24 @@
                     <td>{{$borrowed_book->returned}}</td>
 
                     <td>
-                        <a href="/borrowed_books/{{$borrowed_book->id}}">Show</a>
+                        <a href="/borrowed/{{$borrowed_book->id}}">Show</a>
                     </td>
-                    
 
                     <td>
-                        <a href="/borrowed_books/{{$borrowed_book->id}}/edit">Edit</a>
+                        <a href="/borrowed/{{$borrowed_book->id}}/edit">Edit</a>
                     </td>
                     <td>
-                        <form action="/borrowed_books/{{$borrowed_book->id}}/delete" method="POST">
+                        <form action="/borrowed/{{$borrowed_book->id}}" method="POST">
                             @csrf
                             @method('delete')
                             <input type="submit" name="delete" value="delete">
                         </form>
-                        
-                        
+
+
                     </td>
                 </tr>
             @endforeach
         </tbody>
     </table>
     @endsection
+

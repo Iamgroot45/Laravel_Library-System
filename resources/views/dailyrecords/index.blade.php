@@ -18,28 +18,22 @@
 			</tr>
 		</thead>
 		<tbody>
-			Schema::create('daily_time_records', function (Blueprint $table) {
-            $table->id();
-            $table->foreign('staff_id')->references('id')->on('staff');
-            $table->time('time_in');
-            $table->time('time_out');
-            $table->date('date');
-            $table->timestamps();
+			
 			@foreach($dailyrecords as $dailyrecord)
 				<tr>
-					<td>{{ $->id }}</td>
-					<td>{{ $dailyrecords->id }}</td>
-					<td>{{ $dailyrecords->staff_id }}</td>
-					<td>{{ $dailyrecords->time_in}}</td>
-					<td>{{ $dailyrecords->time_out}}</td>
+					<td>{{ $dailyrecord->id }}</td>
+					<td>{{ $dailyrecord->id }}</td>
+					<td>{{ $dailyrecord->staff_id }}</td>
+					<td>{{ $dailyrecord->time_in}}</td>
+					<td>{{ $dailyrecord->time_out}}</td>
 					 <td>
-                        <a href="/dailyrecords/{{$dailyrecord->id}}">Show</a>
+                        <a href="/dailytimerecords/{{$dailyrecord->id}}">Show</a>
                     </td>
                     <td>
-                        <a href="/dailyrecords/{{$dailyrecord->id}}/edit">Edit</a>
+                        <a href="/dailytimerecords/{{$dailyrecord->id}}/edit">Edit</a>
                     </td>
                     <td>
-                        <form action="/dailyrecords/{{$dailyrecord->id}}/delete" method="POST">
+                        <form action="/dailytimerecords/{{$dailyrecord->id}} "method="POST">
                             @csrf
                             @method('delete')
                             <input type="submit" name="delete" value="delete">

@@ -19,6 +19,8 @@ class AlterStaffTable extends Migration
             $table->string('last_name');
             $table->string('first_name');
             $table->string('middle_initial');
+            $table->string('email');
+            $table->unique('email');
             $table->string('position');
             $table->string('area_assigned');
         });

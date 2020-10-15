@@ -41,8 +41,8 @@
         <input type="text" name="summary" value="{{ $book -> summary}}">
 
         <br>
-        <label>Publication Date:</label>
-        <input type="text" name="publication_date" value="{{ $book -> publication_date}}">
+        <label>Publication year:</label>
+        <input type="text" name="publication_year" value="{{ $book -> publication_year}}">
 
         <br>
         <label>Book Location:</label>
@@ -50,7 +50,7 @@
 
         <br>
         <label>No. of Copies:</label>
-        <input type="text" name="no_of_copies" value="{{ $book -> number_of_copies}}">
+        <input type="text" name="no_of_copies" value="{{ $book -> no_of_copies}}">
 
         <br>
         <input type="submit" name="submit">

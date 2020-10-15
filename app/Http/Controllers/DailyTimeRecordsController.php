@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\daily_time_records;
-use Cabon\Carbon;
+use App\DailyTimeRecord;
+use Illuminate\Support\Carbon;
 use Illuminate\Http\Request;
 
-class daily_time_records extends Controller
+class DailyTimeRecordsController extends Controller
 {
-    
-
-  public function index(){
-    	$dailyrecords = Dailyrecords::all();
+    public function index(){
+    	$dailyrecords = DailyTimeRecord::all();
     	return view('dailyrecords.index' , compact('dailyrecord'));
     }
 
@@ -21,18 +19,18 @@ class daily_time_records extends Controller
 
     public function store(){
     	request ()->validate([
-    		
+
     		'ID' => 'required',
     		'staff_id' => 'required',
     		'time_in' => 'required',
     		'time_out' => 'required',
     		'date'=> 'required'
-    		
+
 
     	]);
 
     	$current = Carbon::now();
-    	$dailyrecord = new Daily_time_records;
+    	$dailyrecord = new DailyTimeRecord;
     	$dailyrecord -> create([
 
     		// column => value
@@ -40,25 +38,25 @@ class daily_time_records extends Controller
     		'staff_id_' => request()-> staff_id,
     		'time_in' => request()-> time_in,
     		'time_out' => request()-> time_out,
-    		'date' => current,
-    	]);	
+    		'date' => $current,
+    	]);
 
     	return redirect('/dailyrecords');
     }
 
-    public function show(Dailyrecords $dailyrecords){
+    public function show(DailyTimeRecord $dailyrecords){
     	// $dailyrecords  = Dailyrecords::find($dailyrecords_id);
     	return view('dailyrecords.show', compact('dailyrecord'));
     }
 
-    public function edit(Dailyrecords $dailyrecords){
+    public function edit(DailyTimeRecord $dailyrecords){
     	return view('dailyrecords.edit', compact('dailyrecord'));
     }
 
-    public function update(Dailyrecords $dailyrecords){
-    	
+    public function update(DailyTimeRecord $dailyrecords){
+
     	request ()->validate([
-    		
+
     		'ID' =>'required',
     		'staff_id' => 'required',
     		'time_in' => 'required',
@@ -66,26 +64,23 @@ class daily_time_records extends Controller
     		'date'=> 'required'
     	]);
 
+        $current = Carbon::now();
+
     	$dailyrecords->update([
     		'ID' => request()->id,
     		'staff_id' => request()->staff_id,
     		'time_in' => request()->time_in,
     		'time_out' => request()->time_out,
-    		'date'=>$current,
-    		
+    		'date'=> $current,
+
 
     	]);
 
     	return redirect('/dailyrecords');
     }
 
-    public function delete(Dailyrecords $dailyrecords){
-    	$reservation->delete();
+    public function delete(DailyTimeRecord $dailyrecords){
+    	$dailyrecords->delete();
     	return redirect('/dailyrecords');
 }
-
-
-
-
-     //
 }

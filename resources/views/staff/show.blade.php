@@ -7,7 +7,7 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Document</title>
+    <title>Staff</title>
 </head>
 <body>
     <div class="container">
@@ -50,6 +50,15 @@
         <div class="row">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
+                    <span class="input-group-text">Email</span>
+                </div>
+                <input type="text" class="form-control" value="{{ $result->email }}" disabled>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
                     <span class="input-group-text">Position</span>
                 </div>
                 <input type="text" class="form-control" value="{{ $result->position }}" disabled>
@@ -68,18 +77,18 @@
         <div class="row">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Created At</span>
+                    <span class="input-group-text">Username</span>
                 </div>
-                <input type="text" class="form-control" value="{{ $result->created_at }}" disabled>
+                <input type="text" class="form-control" value="{{ $result->user->username }}" disabled>
             </div>
         </div>
 
         <div class="row">
             <div class="input-group mb-3">
                 <div class="input-group-prepend">
-                    <span class="input-group-text">Updated At</span>
+                    <span class="input-group-text">Password</span>
                 </div>
-                <input type="text" class="form-control" value="{{ $result->updated_at }}" disabled>
+                <input type="text" class="form-control" value="{{ $result->user->password }}" disabled>
             </div>
         </div>
 

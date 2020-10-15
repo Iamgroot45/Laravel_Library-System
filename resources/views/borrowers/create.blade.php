@@ -16,6 +16,14 @@
         @endif
 
 		@csrf
+		<label>Select User ID:</label>
+		<select name="user_id" class="browser-default">
+			@foreach($users as $user)
+					<option value="{{ $user->id }}">{{ $user->username }}</option>
+			@endforeach
+		</select>
+		<br>
+
 		<label>First Name:</label>
 		<input type="text " name="first_name" required placeholder="First Name">
 		<label>Middle Initial:</label>

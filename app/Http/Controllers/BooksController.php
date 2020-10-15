@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Author;
 use Illuminate\Http\Request;
 
 class BooksController extends Controller
@@ -24,82 +25,125 @@ class BooksController extends Controller
 
     public function store(Request $request)
     {
-        request()->validate([
-            'isbn' => 'required|numeric',
+        $rawData = $request->validate([
+            'isbn' => 'required',
             'title' => 'required',
             'publisher' => 'required',
             'description' => 'required',
             'summary' => 'required',
-            'publication_date' => 'required',
+            'publication_year' => 'required',
             'book_location' => 'required',
-            'number_of_copies' => 'required|numeric'
+            'no_of_copies' => 'required|numeric',
+            'available_copies' => 'required|numeric',
+            'rating_1' => 'required',
+            'rating_2' => 'required',
+            'rating_3' => 'required',
+            'rating_4' => 'required',
+            'rating_5' => 'required',
+            'average_rating' => 'required'
 
         ]);
-        $book = new Book();
-        $book -> create([
+    /*
+        $authorId = "";
 
-            'isbn' => request() ->isbn,
-            'title' => request() ->title,
-            'publisher' => request() ->publisher,
-            'description' => request() ->description,
-            'summary' => request() ->summary,
-            'publication_date' => request() ->publication_date,
-            'book_location' => request() ->book_location,
-            'number_of_copies' => request() ->no_of_copies
+        $author = Author::where([
+            'last_name' => $request->last_name,
+            'first_name' => $request->first_name,
+            'middle_initial' => $request->middle_initial
+        ])->get();
 
+
+        if($author->count() != 1){
+            $author = Author::create([
+                'last_name' => $request->last_name,
+                'first_name' => $request->first_name,
+                'middle_initial' => $request->middle_initial
+            ]);
+
+            $authorId = $author->id;
+        }else{
+
+            $authorId = $author[0]->id;
+
+        }
+
+        $book = Book::create([
+
+        Book::create([
+            'isbn' => $request ->isbn,
+            'title' => $request ->title,
+            'publisher' => $request ->publisher,
+            'description' => $request ->description,
+            'summary' => $request ->summary,
+            'publication_year' => $request ->publication_year,
+            'book_location' => $request ->book_location,
+            'no_of_copies' => $request ->no_of_copies,
+            'available_copies' => $request ->available_copies
         ]);
+
+        $book->authors()->attach($authorId);
+    */
+        Book::create($rawData);
 
         return redirect ('/books');
     }
 
 
-    public function show(Book $book)
+    public function show($id)
     {
-
+        $book = Book::find($id);
         return view ('books.show', compact('book'));
     }
 
 
-    public function edit(Book $book)
+    public function edit($id)
     {
-
+        $book = Book::find($id);
         return view ('books.edit', compact('book'));
 
     }
 
 
-    public function update(Book $book)
+    public function update(Request $request, $id)
     {
-        request()->validate([
-            'isbn' => 'required|numeric',
+        $updateValues = $request->validate([
+            'isbn' => 'required',
             'title' => 'required',
             'publisher' => 'required',
             'description' => 'required',
             'summary' => 'required',
-            'publication_date' => 'required',
+            'publication_year' => 'required',
             'book_location' => 'required',
-            'number_of_copies' => 'required|numeric'
+            'no_of_copies' => 'required|numeric',
+            'available_copies' => 'required|numeric',
+            'rating_1' => 'required',
+            'rating_2' => 'required',
+            'rating_3' => 'required',
+            'rating_4' => 'required',
+            'rating_5' => 'required',
+            'average_rating' => 'required'
 
         ]);
-        $book -> update([
 
-            'isbn' => request() ->isbn,
-            'title' => request() ->title,
-            'publisher' => request() ->publisher,
-            'description' => request() ->description,
-            'summary' => request() ->summary,
-            'publication_date' => request() ->publication_date,
-            'book_location' => request() ->book_location,
-            'number_of_copies' => request() ->no_of_copies
+        Book::find($id) ->update($updateValues);
+       /* $book -> update([
+            'isbn' => $request ->isbn,
+            'title' => $request ->title,
+            'publisher' => $request ->publisher,
+            'description' => $request ->description,
+            'summary' => $request ->summary,
+            'publication_year' => $request ->publication_year,
+            'book_location' => $request ->book_location,
+            'no_of_copies' => $request ->no_of_copies
         ]);
-
+        */
+        return redirect('/books');
     }
 
-
-    public function delete(Book $book)
+    public function destroy($id)
     {
 
-        $book->delete();
+        Book::destroy($id);
         return redirect('/books');
 
     }

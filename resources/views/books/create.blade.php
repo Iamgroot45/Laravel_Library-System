@@ -39,8 +39,8 @@
         <input type="text" name="summary">
 
         <br>
-        <label>Publication Date:</label>
-        <input type="text" name="publication_date">
+        <label>Publication Year:</label>
+        <input type="text" name="publication_year">
 
         <br>
         <label>Book Location:</label>
@@ -49,6 +49,16 @@
         <br>
         <label>No. of Copies:</label>
         <input type="text" name="no_of_copies">
+
+        <br>
+        <label>Available Copies:</label>
+        <input type="text" name="available_copies">
+
+        <br>
+        <label>Author:</label>
+        <input type="text" name="last_name" placeholder="Last Name">
+        <input type="text" name="first_name" placeholder="First Name">
+        <input type="text" name="middle_initial" placeholder="Middle Initial">
 
         <br>
         <input type="submit" name="submit">

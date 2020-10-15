@@ -17,7 +17,7 @@
                     <th>Publisher</th>
                     <th>Description</th>
                     <th>Summary</th>
-                    <th>Publication Date</th>
+                    <th>Publication Year</th>
                     <th>Book Location</th>
                     <th>No. of copies</th>
                 </tr>
@@ -31,16 +31,16 @@
                         <td>{{$book -> publisher}}</td>
                         <td>{{$book -> description}}</td>
                         <td>{{$book -> summary}}</td>
-                        <td>{{$book -> publication_date}}</td>
+                        <td>{{$book -> publication_year}}</td>
                         <td>{{$book -> book_location}}</td>
-                        <td>{{$book -> number_of_copies}}</td>
+                        <td>{{$book -> no_of_copies}}</td>
                         <td>
                             <a href="/books/{{$book->id}}">Display</a>
 
                             <a href="/books/{{$book->id}}/edit">Edit</a>
 
 
-                            <form action='/books/{{$book->id}}/delete' method="POST">
+                            <form action='/books/{{$book->id}}' method="POST">
                                 @csrf
 
                                 @method('DELETE')

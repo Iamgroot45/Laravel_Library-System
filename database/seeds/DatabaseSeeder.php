@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Book;
+use App\Staff;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +13,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(StaffSeeder::class);
+        $this->call(BooksSeeder::class);
         // $this->call(UserSeeder::class);
+        $this->call(BorrowerSeeder::class);
+
+        $this->call([
+        	ReservationSeeder::class
+        ]);
+        $this->call(BorrowedBooksSeeder::class);
+        $this->call([AuthorSeeder::class]);
+
+        $this->call([BookAuthorSeeder::class]);
     }
 }

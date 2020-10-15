@@ -13,8 +13,8 @@
     <h3>Publisher: {{$book->publisher}}</h3>
     <h3>Description: {{$book->description}}</h3>
     <h3>Summary: {{$book->summary}}</h3>
-    <h3>Publication Date: {{$book->publication_date}}</h3>
+    <h3>Publication Year: {{$book->publication_year}}</h3>
     <h3>Book location: {{$book->book_location}}</h3>
-    <h3>Number of copies: {{$book->number_of_copies}}</h3>
+    <h3>Number of copies: {{$book->no_of_copies}}</h3>
 </body>
 </html>
