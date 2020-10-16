@@ -13,8 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//TESTING ROUTES
-Route::get('/', 'TestController@index');
+// ------------------TEST ROUTE------------------------------
+Route::get('/test', 'TestController@index');
+// -------------------------------------------------------
+
+// ------------------INDEX------------------------------
+Route::get('/', function(){
+    return view('layouts.master');
+});
+// -------------------------------------------------------
 
 // ------------------LOGIN------------------------------
 Route::get('/login', function(){
@@ -26,7 +33,12 @@ Route::post('/login/authenticate', 'AuthController@login');
 Route::get('/logout', 'AuthController@logout')->name('logout');
 // -------------------------------------------------------
 
-//Route::middleware('auth')->group(function () {
+// ------------------REGISTER------------------------------
+Route::get('borrowers/create','BorrowersController@create');
+Route::post('borrowers','BorrowersController@store');
+// --------------------------------------------------------
+
+Route::middleware('auth')->group(function () {
     // ------------------AUTHORS------------------------------
     Route::resource('authors', 'AuthorsController');
     // -------------------------------------------------------
@@ -48,7 +60,12 @@ Route::get('/logout', 'AuthController@logout')->name('logout');
     // -------------------------------------------------------
 
     // -----------------BORROWERS-----------------------------
-    Route::resource('borrowers', 'BorrowersController');
+    //Route::resource('borrowers', 'BorrowersController');
+    Route::get('borrowers', 'BorrowersController@index');
+    Route::get('borrowers/{borrower}','BorrowersController@show');
+    Route::get('borrowers/{borrower}/edit', 'BorrowedBooksController@edit');
+    Route::put('borrowers/{borrower}', 'BorrowedBooksController@update');
+    Route::delete('borrowers/{borrower}', 'BorrowersController@destroy');
     // -------------------------------------------------------
 
     // -----------------DAILY_TIME_RECORDS--------------------
@@ -62,7 +79,7 @@ Route::get('/logout', 'AuthController@logout')->name('logout');
     // -----------------USERS---------------------------------
     Route::resource('users', 'UsersController');
     // -------------------------------------------------------
-//});
+});
 
 
 

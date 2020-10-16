@@ -38,7 +38,7 @@
         <hr>
 
         <div class="d-flex justify-content-center">
-            <a class="btn btn-light" href="users/create">Register</a>
+            <a class="btn btn-light" href="borrowers/create">Register</a>
         </div>
 
         <hr>

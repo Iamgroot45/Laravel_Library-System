@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Borrower;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class BorrowersController extends Controller
 {
@@ -28,8 +29,7 @@ class BorrowersController extends Controller
      */
     public function create()
     {
-        $users = User::all();
-        return view('borrowers.create', compact('users'));
+        return view('borrowers.create');
     }
 
     /**
@@ -41,25 +41,27 @@ class BorrowersController extends Controller
     public function store(Borrower $borrower)
     {
         request()->validate([
-            'user_id' => 'required',
-            'first_name' => 'required',
             'last_name' => 'required',
+            'first_name' => 'required',
             'middle_initial' => 'required',
             'contact_number' => 'required',
-            'email_address' =>  'required',
-            'purpose' => 'required'
+            'email' =>  'required',
+            'password' => 'required'
         ]);
 
-        $borrower = new Borrower;
-        $borrower->create([
-            // column => value
-            'user_id' => request()->user_id,
-            'first_name' => request()->first_name,
+        $user = User::create([
+            'username' => request()->email,
+            'password' => Hash::make(request()->password),
+            'distinction' => 'BORROWER'
+        ]);
+
+        Borrower::create([
+            'user_id' => $user->id,
             'last_name' => request()->last_name,
+            'first_name' => request()->first_name,
             'middle_initial' => request()->middle_initial,
             'contact_number' => request()->contact_number,
-            'email_address' =>  request()->email_address,
-            'purpose' => request()->purpose
+            'email' =>  request()->email
         ]);
         return redirect('/borrowers');
     }
