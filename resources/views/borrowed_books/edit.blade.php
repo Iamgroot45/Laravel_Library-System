@@ -1,24 +1,25 @@
 @extends('layouts.master')
 
 @section('contents')
+    <div class="container">
+        <form action="/borrowed/{{$borrowed_book->id}}" method="POST">
 
-    <form action="/borrowed/{{$borrowed_book->id}}" method="POST">
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
 
-        @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-        @endif
+            @csrf
+            @method('PUT')
+            <label for="">Status:</label>
+            <input type="text" name="status" value="{{$borrowed_book->status}}">
 
-        @csrf
-        @method('PUT')
-        <label for="">Status:</label>
-        <input type="text" name="status" value="{{$borrowed_book->status}}">
-
-        <input type="submit">
-    </form>
-    @endsection
+            <input type="submit">
+        </form>
+    </div>
+@endsection

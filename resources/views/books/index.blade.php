@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <div>
+@extends('layouts.master')
+
+@section('contents')
+    <div class="container-fluid">
         <table>
             <thead>
                 <tr>
@@ -47,15 +41,14 @@
 
                                 <input type="submit" name="delete" value="delete">
                             </form>
-
                         </td>
                     </tr>
-                 @endforeach
+                @endforeach
             </tbody>
         </table>
+
+        {{ $books->links() }}
+
+        <a class="btn btn-dark" href="books/create">Create</a>
     </div>
-
-
-
-</body>
-</html>
+@endsection

@@ -1,60 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form action="/books/{{$book -> id}}" method="POST">
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-        @csrf
+@extends('layouts.master')
 
-        @method('PUT')
+@section('contents')
+    <div class="container">
+        <form action="/books/{{$book -> id}}" method="POST">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            @csrf
 
-        <label>ISBN:</label>
-        <input type="text" name="isbn" value="{{ $book -> isbn}}">
+            @method('PUT')
 
-        <br>
-        <label>Title:</label>
-        <input type="text" name="title" value="{{ $book -> title}}">
+            <label>ISBN:</label>
+            <input type="text" name="isbn" value="{{ $book -> isbn}}">
 
-        <br>
-        <label>Publisher:</label>
-        <input type="text" name="publisher" value="{{ $book -> publisher}}">
+            <br>
+            <label>Title:</label>
+            <input type="text" name="title" value="{{ $book -> title}}">
 
-        <br>
-        <label>Description:</label>
-        <input type="text" name="description" value="{{ $book -> description}}">
+            <br>
+            <label>Publisher:</label>
+            <input type="text" name="publisher" value="{{ $book -> publisher}}">
 
-        <br>
-        <label>Summary:</label>
-        <input type="text" name="summary" value="{{ $book -> summary}}">
+            <br>
+            <label>Description:</label>
+            <input type="text" name="description" value="{{ $book -> description}}">
 
-        <br>
-        <label>Publication year:</label>
-        <input type="text" name="publication_year" value="{{ $book -> publication_year}}">
+            <br>
+            <label>Summary:</label>
+            <input type="text" name="summary" value="{{ $book -> summary}}">
 
-        <br>
-        <label>Book Location:</label>
-        <input type="text" name="book_location" value="{{ $book -> book_location}}">
+            <br>
+            <label>Publication year:</label>
+            <input type="text" name="publication_year" value="{{ $book -> publication_year}}">
 
-        <br>
-        <label>No. of Copies:</label>
-        <input type="text" name="no_of_copies" value="{{ $book -> no_of_copies}}">
+            <br>
+            <label>Book Location:</label>
+            <input type="text" name="book_location" value="{{ $book -> book_location}}">
 
-        <br>
-        <input type="submit" name="submit">
+            <br>
+            <label>No. of Copies:</label>
+            <input type="text" name="no_of_copies" value="{{ $book -> no_of_copies}}">
 
-    </form>
-</body>
-</html>
+            <br>
+            <input type="submit" name="submit">
+
+        </form>
+    </div>
+@endsection

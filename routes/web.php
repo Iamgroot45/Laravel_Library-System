@@ -19,7 +19,7 @@ Route::get('/test', 'TestController@index');
 
 // ------------------INDEX------------------------------
 Route::get('/', function(){
-    return view('layouts.master');
+    return view('home');
 });
 // -------------------------------------------------------
 

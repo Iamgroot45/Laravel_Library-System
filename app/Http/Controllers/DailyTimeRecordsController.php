@@ -10,7 +10,7 @@ class DailyTimeRecordsController extends Controller
 {
     public function index(){
     	$dailyrecords = DailyTimeRecord::all();
-    	return view('dailyrecords.index' , compact('dailyrecord'));
+    	return view('dailyrecords.index' , compact('dailyrecords'));
     }
 
    public function create(){

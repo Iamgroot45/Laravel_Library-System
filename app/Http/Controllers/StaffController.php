@@ -25,7 +25,7 @@ class StaffController extends Controller
 
     public function store(Request $request)
     {
-        /* $form_fileds = $request->validate([
+        $form_fileds = $request->validate([
             'last_name' => 'required',
             'first_name' => 'required',
             'middle_initial' => ['required', 'max:1'],
@@ -33,9 +33,9 @@ class StaffController extends Controller
             'position' => 'required',
             'area_assigned' => 'required',
             'password' => 'required'
-        ]); */
+        ]);
 
-        /* $user = User::create([
+        $user = User::create([
             'username' => $request->input('email'),
             'password' => Hash::make($request->input('password')),
             'distinction' => 'ADMIN'
@@ -49,20 +49,21 @@ class StaffController extends Controller
             'email' => $request->input('email'),
             'position' => $request->input('position'),
             'area_assigned' => $request->input('area_assigned')
-        ]); */
+        ]);
 
         //========= FOR TESTING ==========//
-        $form_fileds = $request->validate([
-            'user_id' => 'required',
+       /*  $form_fileds = $request->validate([
+            //'user_id' => 'required',
             'last_name' => 'required',
             'first_name' => 'required',
             'middle_initial' => ['required', 'max:1'],
             'email' => 'required',
             'position' => 'required',
             'area_assigned' => 'required',
+            'password' => 'required'
         ]);
 
-        Staff::create($form_fileds);
+        Staff::create($form_fileds); */
 
         return redirect('/staff');
     }
@@ -83,7 +84,7 @@ class StaffController extends Controller
 
     public function update(Request $request, $id)
     {
-        /* $request->validate([
+        $request->validate([
             'last_name' => 'required',
             'first_name' => 'required',
             'middle_initial' => ['required', 'max:1'],
@@ -91,9 +92,9 @@ class StaffController extends Controller
             'area_assigned' => 'required',
             'email' => 'required',
             'password' => 'required'
-        ]); */
+        ]);
 
-        /* $user = User::find(Staff::find($id)->id);
+        $user = User::find(Staff::find($id)->id);
         $user->update([
             'username' => $request->input('email'),
             'password'=> $request->input('password')
@@ -106,35 +107,34 @@ class StaffController extends Controller
             'email' => $request->input('email'),
             'position' => $request->input('position'),
             'area_assigned' => $request->input('area_assigned')
-        ]); */
+        ]);
 
         //========= FOR TESTING ==========//
-        $form_fileds = $request->validate([
-            'user_id' => 'required',
+        /* $form_fileds = $request->validate([
+            //'user_id' => 'required',
             'last_name' => 'required',
             'first_name' => 'required',
             'middle_initial' => ['required', 'max:1'],
-            'email' => 'required',
             'position' => 'required',
             'area_assigned' => 'required',
-        ]);
-
-        Staff::find($id)->update($form_fileds);
-
+            'email' => 'required',
+        ]); */
         return redirect('/staff');
     }
 
     public function destroy($id)
     {
-        /* $staff = Staff::find($id);
+        $staff = Staff::find($id);
+        $staff->borrowed()->forceDelete();
+        $staff->dailytimerecords()->forceDelete();
         $uid = $staff->user_id;
 
-        $staff->destroy($id);
-        User::destroy($uid); */
+        $staff->delete($id);
+        User::destroy($uid);
 
         //========= FOR TESTING ==========//
-        $staff = Staff::find($id);
-        $staff->destroy($id);
+        /* $staff = Staff::find($id);
+        $staff->destroy($id); */
 
         return redirect('/staff');
     }

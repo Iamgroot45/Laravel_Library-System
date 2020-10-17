@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Dailyrecords</title>
-</head>
-<body>
-	<h2>Dailyrecords: </h2>
+@extends('layouts.master')
+
+@section('contents')
+    <div class="container">
+        <h2>Dailyrecords: </h2>
 	<table>
 		<thead>
 			<tr>
@@ -13,12 +11,12 @@
 				<th>Date</th>
 				<th>Time In</th>
 				<th>Time Out</th>
-				
-				
+
+
 			</tr>
 		</thead>
 		<tbody>
-			
+
 			@foreach($dailyrecords as $dailyrecord)
 				<tr>
 					<td>{{ $dailyrecord->id }}</td>
@@ -44,6 +42,6 @@
 		</tbody>
 
 	</table>
-	<a href="/dailyrecords/create">Create</a>    
-</body>
-</html> 
+	<a href="/dailyrecords/create">Create</a>
+    </div>
+@endsection

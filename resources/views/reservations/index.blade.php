@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Reservations</title>
-</head>
-<body>
-	<h2>Reservations: </h2>
+@extends('layouts.master')
+
+@section('contents')
+    <div class="container">
+        <h2>Reservations: </h2>
 	<table>
 		<thead>
 			<tr>
@@ -37,8 +35,8 @@
 				</tr>
 			@endforeach
 		</tbody>
-           
+
 	</table>
-	<a href="/reservations/create">Create</a>    
-</body>
-</html>
+	<a href="/reservations/create">Create</a>
+    </div>
+@endsection

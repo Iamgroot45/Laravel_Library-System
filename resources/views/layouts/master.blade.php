@@ -7,14 +7,13 @@
 
     <link rel="stylesheet" href="{{asset('css/main.css')}}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-    <title>Document</title>
+    <title>Library</title>
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-dark bg-dark justify-content-between">
-            <h3 style="color:white;">Library</h3>
+        <nav class="navbar fixed-top navbar-dark bg-dark justify-content-between">
+            <a class="nav-link" href="/">Library</a>
             <ul class="nav nav-pills flex-column flex-sm-row">
                 @auth
                     <li class="nav-item">
@@ -42,7 +41,7 @@
     </main>
 
 
-    <footer  class="p-3 bg-dark text-white fixed-bottom">
+    <footer  class="p-3 bg-dark text-white">
         <div class="container text-center text-md-left">
           <div class="row">
             <div class="col-md-6 mb-md-0 mb-3">

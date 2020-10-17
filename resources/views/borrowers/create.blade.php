@@ -1,14 +1,7 @@
-<!DOCTYPE html>
-<html>
+@extends('layouts.master')
 
-<head>
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<title></title>
-</head>
-
-<body>
-	<div class="container form-design">
+@section('contents')
+    <div class="container form-design">
         <form action="/borrowers" method="POST">
             @csrf
             <div class="form-row">
@@ -92,6 +85,5 @@
                 </div>
             </div>
         </form>
-	</div>
-</body>
-</html>
+    </div>
+@endsection

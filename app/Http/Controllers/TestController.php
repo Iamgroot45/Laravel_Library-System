@@ -40,5 +40,9 @@ class TestController extends Controller
         //$author = Author::find(78);
 
         //echo $author->books;
+
+        $book = Book::find(776);
+        $author = $book->authors[0];
+        dd(compact('book', $author));
     }
 }

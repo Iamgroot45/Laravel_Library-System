@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DailyTimeRecords extends Model
+class DailyTimeRecord extends Model
 {
     //
     protected $guarded = [];

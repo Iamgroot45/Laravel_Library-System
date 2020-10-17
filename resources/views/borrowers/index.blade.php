@@ -1,10 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<h2>Borrowers</h2>
+@extends('layouts.master')
+
+@section('contents')
+    <div class="container">
+        <h2>Borrowers</h2>
 	<table>
 		<thead>
 			<tr>
@@ -18,7 +16,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			@foreach($borrowers as $borrower) 
+			@foreach($borrowers as $borrower)
 				<tr>
 					<td>{{ $borrower->id }}</td>
 					<td>{{ $borrower->user['username'] }}</td>
@@ -45,5 +43,5 @@
 		</tbody>
 		<a href="/borrowers/create">Create</a>
 	</table>
-</body>
-</html>
+    </div>
+@endsection
